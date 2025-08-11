@@ -1,0 +1,141 @@
+# Copyright (C) 2024 Horendra Pal Singh Kandari
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Custom Login Page Logo 1.3.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/custom-login-page-logo\n"
+"POT-Creation-Date: 2024-10-10T10:56:26+01:00\n"
+"PO-Revision-Date: 2024-10-10 15:37+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Domain: custom-login-page-logo\n"
+
+#. Plugin Name of the plugin
+#: custom-login-page-logo.php
+msgid "Custom Login Page Logo"
+msgstr "कस्टम लॉगिन पृष्ठ लोगो"
+
+#. Description of the plugin
+#: custom-login-page-logo.php
+msgid ""
+"Allows users to customize or change wordpress logo to their own brand on WordPress login page."
+msgstr ""
+"उपयोगकर्ताओं को वर्डप्रेस लॉगिन पृष्ठ पर वर्डप्रेस लोगो को अपने स्वयं के ब्रांड में अनुकूलित या बदलने की अनुमति देता है।"
+
+#. Author of the plugin
+#: custom-login-page-logo.php
+msgid "Horendra Pal Singh Kandari"
+msgstr "होरेन्द्र पाल सिंह कंडारी"
+
+#: clpl-admin-menu.php:10
+msgid "Custom Login Page Logo Settings"
+msgstr "कस्टम लॉगिन पृष्ठ लोगो सेटिंग्स"
+
+#: clpl-admin-menu.php:32
+msgid "Custom Login Logo"
+msgstr "कस्टम लॉगिन लोगो"
+
+#: clpl-admin-menu.php:33
+msgid "Login Logo"
+msgstr "लॉगिन लोगो"
+
+#: clpl-settings-fields.php:18
+msgid "Upload Logo"
+msgstr "लोगो अपलोड करें"
+
+#: clpl-settings-fields.php:21
+msgid "Upload image or enter a custom URL with http or https"
+msgstr "छवि अपलोड करें या http या https के साथ कस्टम URL दर्ज करें"
+
+#: clpl-settings-fields.php:43
+msgid "Enter logo width"
+msgstr "लोगो की चौड़ाई दर्ज करें"
+
+#: clpl-settings-fields.php:60
+msgid "Choose the measurement unit for logo width"
+msgstr "लोगो की चौड़ाई के लिए माप की इकाई चुनें"
+
+#: clpl-settings-fields.php:75
+msgid "Enter logo height"
+msgstr "लोगो की ऊंचाई दर्ज करें"
+
+#: clpl-settings-fields.php:92
+msgid "Choose the measurement unit for logo height"
+msgstr "लोगो की ऊंचाई के लिए माप की इकाई चुनें"
+
+#: clpl-settings-fields.php:112
+msgid "Example: https://mydomain.com or http://mydomain.com"
+msgstr "उदाहरण: https://mydomain.com या http://mydomain.com"
+
+#: clpl-settings-fields.php:124
+msgid "Yes"
+msgstr "हाँ"
+
+#: clpl-settings-fields.php:127
+msgid "Select if you want logo shadow"
+msgstr "यदि आप लोगो छाया चाहते हैं तो चुनें"
+
+#: clpl-settings-fields.php:141
+msgid "Enter logo border radius in \"px\""
+msgstr "लोगो के कोनों की गोलाई \"px\" में दर्ज करें।"
+
+#: clpl-settings-fields.php:155
+msgid "Enter logo padding in \"px\""
+msgstr "लोगो पैडिंग को \"px\" में दर्ज करें"
+
+#: clpl-settings-fields.php:161
+msgid "(Upload or select a custom logo for the login page.)"
+msgstr "(लॉगिन पृष्ठ के लिए लोगो अपलोड करें या चुनें.)"
+
+#: clpl-settings-fields.php:170
+msgid "Custom Login Logo Settings"
+msgstr "लॉगिन लोगो सेटिंग्स"
+
+#: clpl-settings-fields.php:177
+msgid "Logo URL"
+msgstr "लोगो यूआरएल"
+
+#: clpl-settings-fields.php:185
+msgid "Logo Width"
+msgstr "लोगो की चौड़ाई"
+
+#: clpl-settings-fields.php:193
+msgid "Logo Width Unit"
+msgstr "लोगो चौड़ाई इकाई"
+
+#: clpl-settings-fields.php:201
+msgid "Logo Height"
+msgstr "लोगो की ऊंचाई"
+
+#: clpl-settings-fields.php:208
+msgid "Logo Height Unit"
+msgstr "लोगो ऊंचाई इकाई"
+
+#: clpl-settings-fields.php:216
+msgid "Logo Redirect URL"
+msgstr "लोगो रीडायरेक्ट URL"
+
+#: clpl-settings-fields.php:224
+msgid "Logo Shadow"
+msgstr "लोगो छाया"
+
+#: clpl-settings-fields.php:232
+msgid "Logo Border Radius"
+msgstr "लोगो के कोनों की गोलाई"
+
+#: clpl-settings-fields.php:239
+msgid "Logo Padding"
+msgstr "लोगो पैडिंग"
+
+#: functions.php:45
+msgid "Choose or Upload a Logo"
+msgstr "लोगो चुनें या अपलोड करें"
+
+#: functions.php:46
+msgid "Use this Logo"
+msgstr "इस लोगो का उपयोग करें"
