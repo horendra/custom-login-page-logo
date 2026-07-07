@@ -1,10 +1,10 @@
 /***** CLPL CUSTOM STYLESHEET *****/
 
-#clpl_logo_container{
+#clpl_logo_container, #clpl_bg_img_container{
     height:auto; 
     width:auto;
 }
-#clpl_logo_container img {
+#clpl_logo_container img, #clpl_bg_img_container img {
     width:150px; 
     height:auto;  
     margin:15px 0;

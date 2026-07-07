@@ -3,9 +3,9 @@ Contributors: Horendra
 Donate link: https://www.paypal.me/horendrasingh
 Tags: change WP admin logo, change login logo, custom login logo, wordpress logo, logo customization
 Requires at least: 4.7
-Tested up to: 6.8
-Version: 1.3.2
-Stable tag: 1.3.2
+Tested up to: 6.9
+Version: 1.4
+Stable tag: 1.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -30,6 +30,11 @@ You can always change it whenever you want.
 * Can add shadow to the logo.
 * Can add logo padding.
 * Can add logo border radius.
+* Can add background color.
+* Can add background image.
+* Can change background image size.
+* Can change background image position.
+* Can change background image repeat.
 * Doesn't impact on your website speed.
 
 ==  Translation  ==
@@ -88,6 +93,13 @@ If you want this plugin in your language then you can contact me via this contac
 
 == Changelog ==
 
+= 1.4 =
+* Code is improved
+* Database is changed
+* Tabs are added
+* Features are divided into tabs
+* Background color is added 
+
 = 1.3.2 =
 * Logo radius is added
 * Logo padding is added
@@ -95,7 +107,7 @@ If you want this plugin in your language then you can contact me via this contac
 
 = 1.3.1 =
 * Short, and Long Description are updated
-* Screenshots are updated
+* Screenshote are updated
 * Titles are added
 * Logo redirect URL is added
 * Logo shadow is added
