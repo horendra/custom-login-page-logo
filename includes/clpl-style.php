@@ -1,7 +1,7 @@
 <?php
 
 // ========== EXIT IF ACCESSED DIRECTLY ==========//
-    if ( ! defined( 'ABSPATH' ) ) exit; 
+if ( ! defined( 'ABSPATH' ) ) exit; 
 
 require_once plugin_dir_path(__FILE__) . 'clpl-core.php';
 
@@ -13,6 +13,7 @@ function clpl_enqueue_styles() {
 
     // ========== LOGO ========== //
 
+    $logo_display       = $options['logo_display'];
     $logo_url           = $options['logo_field'];
     $logo_width         = $options['logo_width'];
     $logo_width_unit    = $options['logo_width_unit'];
@@ -25,6 +26,7 @@ function clpl_enqueue_styles() {
 
     // ========== BACKGROUND ========== //
 
+    $bg_type            = $options['background_type'];
     $bg_color           = $options['background_color'];
     $bg_image           = $options['background_img'];
     $bg_img_size        = $options['background_img_size'];
@@ -49,6 +51,8 @@ function clpl_enqueue_styles() {
 
     // ========== LANGUAGE SWITCHER ========== //
 
+    $lang_switch_display                    = $options['lang_switch_display'];
+
     $lang_switch_select_bg_color            = $options['lang_switch_select_bg_color'];
     $lang_switch_select_txt_color           = $options['lang_switch_select_txt_color'];
     $lang_switch_select_border_color        = $options['lang_switch_select_border_color'];
@@ -70,80 +74,88 @@ function clpl_enqueue_styles() {
     $lang_switch_btn_hover_txt_color        = $options['lang_switch_btn_hover_txt_color'];
     $lang_switch_btn_hover_border_color     = $options['lang_switch_btn_hover_border_color'];
     
-    echo '<style type = text/css>    
-        body.login {';
-            
-            // ========== BACKGROUND ========== //
+    // ========== BACKGROUND ========== //
 
-            if ( ! empty( $bg_color ) ) {
-                echo 'background-color: ' . esc_attr( $bg_color ) . ';';
-            } 
-            if ( ! empty( $bg_image ) ) {
-                echo 'background-image: url(' . esc_url( $bg_image ) . ');';
-            }
-            if ( ! empty( $bg_img_size ) ) {
-                echo 'background-size: '. esc_attr( $bg_img_size ) . ';';
-            }
-            if ( ! empty( $bg_img_pos ) ) {
-                echo 'background-position: '. esc_attr( $bg_img_pos ) . ';';
-            }
-            if ( ! empty( $bg_img_rep ) ) {
-                echo 'background-repeat: '. esc_attr( $bg_img_rep ) . ';';
-            }
-            echo 'transition: background-color 0.3s ease;';
+    echo'<style type = text/css>';
+        if($bg_type === 'color'){
+            echo'body.login {';
+                if ( ! empty( $bg_color ) ) {
+                    echo 'background-color: ' . esc_attr( $bg_color ) . ';';
+                } 
+            echo'}';
+        } else{
+            echo'body.login {'; 
+                if ( ! empty( $bg_image ) ) {
+                    echo 'background-image: url(' . esc_url( $bg_image ) . ');';
+                }
+                if ( ! empty( $bg_img_size ) ) {
+                    echo 'background-size: '. esc_attr( $bg_img_size ) . ';';
+                }
+                if ( ! empty( $bg_img_pos ) ) {
+                    echo 'background-position: '. esc_attr( $bg_img_pos ) . ';';
+                }
+                if ( ! empty( $bg_img_rep ) ) {
+                    echo 'background-repeat: '. esc_attr( $bg_img_rep ) . ';';
+                }
+                echo 'transition: background-color 0.3s ease;';
         
-        echo '}';
+            echo '}';
 
-        if ( ! empty( $bg_overlay_color ) ) {
-            echo'  
-            body.login {
-                position: relative;
-            }  
-            body.login::before{
-                content:"";
-                position:fixed;
-                inset:0;
-                background:'.esc_attr($bg_overlay_color).';
-                z-index:0;
-                pointer-events: none;
+            if ( ! empty( $bg_overlay_color ) ) {
+                echo'  
+                body.login {
+                    position: relative;
+                }  
+                body.login::before{
+                    content:"";
+                    position:fixed;
+                    inset:0;
+                    background:'.esc_attr($bg_overlay_color).';
+                    z-index:0;
+                    pointer-events: none;
+                }
+                body.login #login, body.login .language-switcher{
+                    position:relative;
+                    z-index:1;
+                }';
             }
-            body.login #login, body.login .language-switcher{
-                position:relative;
-                z-index:1;
-            }';
         }
             
         // ========== LOGO ========== // 
 
-        echo '#login h1 a {';
+        if(isset($logo_display) && $logo_display === 0){
+            echo'#login h1 a { display:none;}';        
+        } else{
+            echo '#login h1 a {';
 
-            if (!empty($logo_url)) {
-                echo'background-image: url(' . esc_url($logo_url) . ');
-                    width: ' . esc_attr($logo_width) . esc_attr($logo_width_unit) . ';
-                    height: ' . esc_attr($logo_height) . esc_attr($logo_height_unit) . ';
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                    background-position: center;';
-            }
-            
-            if(!empty($logo_border_radius)){
-                echo'border-radius: '.esc_attr($logo_border_radius).'px;';
-            }
-
-            if(!empty($logo_shadow)){
-                if($logo_shadow == 1){
-                    echo '
-                        box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);             
-                        ';
+                if (!empty($logo_url)) {
+                    echo'background-image: url(' . esc_url($logo_url) . ');
+                        width: ' . esc_attr($logo_width) . esc_attr($logo_width_unit) . ';
+                        height: ' . esc_attr($logo_height) . esc_attr($logo_height_unit) . ';
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        background-position: center;';
                 }
-            }
+                
+                if(!empty($logo_border_radius)){
+                    echo'border-radius: '.esc_attr($logo_border_radius).'px;';
+                }
 
-            if(!empty($logo_padding)){
-                echo 'padding:'.esc_attr($logo_padding).'px;
-                background-origin: content-box;';
-            }
+                if(!empty($logo_shadow)){
+                    if($logo_shadow == 1){
+                        echo '
+                            box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);             
+                            ';
+                    }
+                }
+
+                if(!empty($logo_padding)){
+                    echo 'padding:'.esc_attr($logo_padding).'px;
+                    background-origin: content-box;';
+                }
         
-        echo'}'; 
+            echo'}'; 
+        }
 
         // ========== FORM ========== //
 
@@ -230,108 +242,113 @@ function clpl_enqueue_styles() {
 
         // ========== LANGUAGE SWITCHER ========== //
 
-        if ( ! empty( $lang_switch_select_bg_color ) ) {
+        if(isset($lang_switch_display) && $lang_switch_display === 0){
+            echo'.language-switcher { display:none;}';        
+        } else{
 
-            echo '.login .language-switcher select {
-                background: ' . esc_attr( $lang_switch_select_bg_color ) . ';
-            }';
-        }
-        if ( ! empty( $lang_switch_select_txt_color ) ) {
+            if ( ! empty( $lang_switch_select_bg_color ) ) {
 
-            echo '.login .language-switcher select {
-                color: ' . esc_attr( $lang_switch_select_txt_color ) . ';
-            }';
-        }
-        if ( ! empty( $lang_switch_select_border_color ) ) {
+                echo '.login .language-switcher select {
+                    background: ' . esc_attr( $lang_switch_select_bg_color ) . ';
+                }';
+            }
+            if ( ! empty( $lang_switch_select_txt_color ) ) {
 
-            echo '.login .language-switcher select {
-                border-color: ' . esc_attr( $lang_switch_select_border_color ) . ';
-            }';
-        }
-        if ( ! empty( $lang_switch_select_arrow_color ) ) {
-            echo'.login .language-switcher select {
-                appearance: none;
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                padding-right: 30px;
-            }';
-            echo'.login .language-switcher .clpl-lang-wrap::after {
-                content:"";
-                position: relative;
-                display:inline-block;
-                transform: rotate(135deg);
-                height:10px;
-                width:10px;
-                border-right:2px solid '.esc_attr($lang_switch_select_arrow_color).';
-                border-top:2px solid '.esc_attr($lang_switch_select_arrow_color).';
-                pointer-events: none;
-                right:25px;
-            }';
-        }
+                echo '.login .language-switcher select {
+                    color: ' . esc_attr( $lang_switch_select_txt_color ) . ';
+                }';
+            }
+            if ( ! empty( $lang_switch_select_border_color ) ) {
 
-        if ( ! empty( $lang_switch_select_hover_bg_color ) ) {
-            echo'.login .language-switcher select:hover{
-                background-color: ' . esc_attr( $lang_switch_select_hover_bg_color ) . ';
-            }';
-        }
-        if ( ! empty( $lang_switch_select_hover_txt_color ) ) {
-            echo'.login .language-switcher select:hover{
-                color: ' . esc_attr( $lang_switch_select_hover_txt_color ) . ';
-            }';
-        }
-        if ( ! empty( $lang_switch_select_hover_border_color ) ) {
-            echo'.login .language-switcher select:hover{
-                border-color: ' . esc_attr( $lang_switch_select_hover_border_color ) . ';
-            }';
-        }
-        if ( ! empty( $lang_switch_select_focus_bg_color ) ) {
-            echo'.login .language-switcher select:focus{
-                background-color: ' . esc_attr( $lang_switch_select_focus_bg_color ) . ';
-            }';
-        }
-        if ( ! empty( $lang_switch_select_focus_txt_color ) ) {
-            echo'.login .language-switcher select:focus{
-                color: ' . esc_attr( $lang_switch_select_focus_txt_color ) . ';
-            }';
-        }
-        if ( ! empty( $lang_switch_select_focus_border_color ) ) {
-            echo'.login .language-switcher select:focus{
-                border-color: ' . esc_attr( $lang_switch_select_focus_border_color ) . ';
-            }';
-        }
-        if ( ! empty( $lang_switch_btn_bg_color ) ) {
+                echo '.login .language-switcher select {
+                    border-color: ' . esc_attr( $lang_switch_select_border_color ) . ';
+                }';
+            }
+            if ( ! empty( $lang_switch_select_arrow_color ) ) {
+                echo'.login .language-switcher select {
+                    appearance: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    padding-right: 30px;
+                }';
+                echo'.login .language-switcher .clpl-lang-wrap::after {
+                    content:"";
+                    position: relative;
+                    display:inline-block;
+                    transform: rotate(135deg);
+                    height:10px;
+                    width:10px;
+                    border-right:2px solid '.esc_attr($lang_switch_select_arrow_color).';
+                    border-top:2px solid '.esc_attr($lang_switch_select_arrow_color).';
+                    pointer-events: none;
+                    right:25px;
+                }';
+            }
 
-            echo '.login .language-switcher .button {
-                background: ' . esc_attr( $lang_switch_btn_bg_color ) . ';
-                border-color: ' . esc_attr( $lang_switch_btn_bg_color ) . ';
-            }';
-        }
-        if ( ! empty( $lang_switch_btn_txt_color ) ) {
+            if ( ! empty( $lang_switch_select_hover_bg_color ) ) {
+                echo'.login .language-switcher select:hover{
+                    background-color: ' . esc_attr( $lang_switch_select_hover_bg_color ) . ';
+                }';
+            }
+            if ( ! empty( $lang_switch_select_hover_txt_color ) ) {
+                echo'.login .language-switcher select:hover{
+                    color: ' . esc_attr( $lang_switch_select_hover_txt_color ) . ';
+                }';
+            }
+            if ( ! empty( $lang_switch_select_hover_border_color ) ) {
+                echo'.login .language-switcher select:hover{
+                    border-color: ' . esc_attr( $lang_switch_select_hover_border_color ) . ';
+                }';
+            }
+            if ( ! empty( $lang_switch_select_focus_bg_color ) ) {
+                echo'.login .language-switcher select:focus{
+                    background-color: ' . esc_attr( $lang_switch_select_focus_bg_color ) . ';
+                }';
+            }
+            if ( ! empty( $lang_switch_select_focus_txt_color ) ) {
+                echo'.login .language-switcher select:focus{
+                    color: ' . esc_attr( $lang_switch_select_focus_txt_color ) . ';
+                }';
+            }
+            if ( ! empty( $lang_switch_select_focus_border_color ) ) {
+                echo'.login .language-switcher select:focus{
+                    border-color: ' . esc_attr( $lang_switch_select_focus_border_color ) . ';
+                }';
+            }
+            if ( ! empty( $lang_switch_btn_bg_color ) ) {
 
-            echo '.login .language-switcher .button {
-                color: ' . esc_attr( $lang_switch_btn_txt_color ) . ';
-            }';
-        }
-        if ( ! empty( $lang_switch_btn_border_color ) ) {
+                echo '.login .language-switcher .button {
+                    background: ' . esc_attr( $lang_switch_btn_bg_color ) . ';
+                    border-color: ' . esc_attr( $lang_switch_btn_bg_color ) . ';
+                }';
+            }
+            if ( ! empty( $lang_switch_btn_txt_color ) ) {
 
-            echo '.login .language-switcher .button {
-                border-color: ' . esc_attr( $lang_switch_btn_border_color ) . ';
-            }';
-        }
-        if ( ! empty( $lang_switch_btn_hover_bg_color ) ) {
-            echo'.login .language-switcher .button:hover{
-                background-color: ' . esc_attr( $lang_switch_btn_hover_bg_color ) . ';
-            }';
-        }
-        if ( ! empty( $lang_switch_btn_hover_txt_color ) ) {
-            echo'.login .language-switcher .button:hover{
-                color: ' . esc_attr( $lang_switch_btn_hover_txt_color ) . ';
-            }';
-        }
-        if ( ! empty( $lang_switch_btn_hover_border_color ) ) {
-            echo'.login .language-switcher .button:hover{
-                border-color: ' . esc_attr( $lang_switch_btn_hover_border_color ) . ';
-            }';
+                echo '.login .language-switcher .button {
+                    color: ' . esc_attr( $lang_switch_btn_txt_color ) . ';
+                }';
+            }
+            if ( ! empty( $lang_switch_btn_border_color ) ) {
+
+                echo '.login .language-switcher .button {
+                    border-color: ' . esc_attr( $lang_switch_btn_border_color ) . ';
+                }';
+            }
+            if ( ! empty( $lang_switch_btn_hover_bg_color ) ) {
+                echo'.login .language-switcher .button:hover{
+                    background-color: ' . esc_attr( $lang_switch_btn_hover_bg_color ) . ';
+                }';
+            }
+            if ( ! empty( $lang_switch_btn_hover_txt_color ) ) {
+                echo'.login .language-switcher .button:hover{
+                    color: ' . esc_attr( $lang_switch_btn_hover_txt_color ) . ';
+                }';
+            }
+            if ( ! empty( $lang_switch_btn_hover_border_color ) ) {
+                echo'.login .language-switcher .button:hover{
+                    border-color: ' . esc_attr( $lang_switch_btn_hover_border_color ) . ';
+                }';
+            }
         }
                 
     echo'</style>';

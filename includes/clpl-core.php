@@ -7,6 +7,7 @@ function clpl_default_options_with_values_new() {
 
         // ========== LOGO ========== //
 
+        'logo_display'              => 1, 
         'logo_field'                => '',
         'logo_width'                => 200,
         'logo_width_unit'           => 'px',
@@ -19,6 +20,7 @@ function clpl_default_options_with_values_new() {
 
         // ========== BACKGROUND ========== //
 
+        'background_type'           => 'color',
         'background_color'          => '#FFFFFF',
         'background_img'            => '',
         'background_img_size'       => 'cover', 
@@ -43,6 +45,7 @@ function clpl_default_options_with_values_new() {
 
         // ========== LANGUAGE SWITCHER ========== //
 
+        'lang_switch_display'                   => 0,
         'lang_switch_select_bg_color'           => '#FFFFFF', 
         'lang_switch_select_txt_color'          => '#2c3338',
         'lang_switch_select_border_color'       => '#8c8f94',

@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Custom Login Page Logo
-Description: Allows users to customize or change wordpress logo to their own brand on WordPress login page.
-Version: 1.4.3
+Description: Create a fully branded or white-label WordPress login experience with custom logo, background, form styling, and language switcher controls.
+Version: 1.4.4
 Author: Horendra Pal Singh Kandari
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

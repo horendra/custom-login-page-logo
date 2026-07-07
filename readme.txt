@@ -5,12 +5,12 @@ Tags: login page customizer, wordpress login logo, custom login page, white labe
 Requires at least: 4.7
 Tested up to: 6.9.4
 Requires PHP: 7.4
-Stable tag: 1.4.3
-Version: 1.4.3
+Stable tag: 1.4.4
+Version: 1.4.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Lightweight WordPress login customizer—logo, background, form & language switcher. No bloat, no coding.
+Lightweight WordPress login customizer— logo, background, form & language switcher. No bloat, no coding.
 
 == Description ==
 
@@ -61,13 +61,6 @@ Whether you are a freelancer, agency, business owner, or developer, you can crea
 * Clean and simple settings interface
 * Beginner-friendly and easy to use
 * Translation ready
-
-== Coming soon features ==
-
-A new look of the plugin is coming soon!
-
-This update will give you to seamless experience to access all the features in more organized way
-so that you can design and create a more modern, branded look of your brand.
 
 Have a feature request? Let us know through a review — your feedback helps shape future updates!
 
@@ -143,11 +136,16 @@ YES, For support or inquiries, please fill out the following [form](https://form
 
 1. Logo Tab (screenshot-1.png)
 2. Background Tab (screenshot-2.png)
-3. Login form tab (screenshot-3.png)
+3. Login form Tab (screenshot-3.png)
 4. Language Switcher Tab (screenshot-4.png)
-4. Customized Login Page (screenshot-5.png)
+5. Customized Login Page (screenshot-5.png)
 
 == Changelog ==
+
+= 1.4.4 =
+* A new look of the plugin is created
+* Logo display option is added
+* Background Type option is added
 
 = 1.4.3 =
 * Language switcher tab is added

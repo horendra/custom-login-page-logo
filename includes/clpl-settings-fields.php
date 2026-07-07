@@ -85,62 +85,91 @@
         <?php
     }
 
+    // ========== DISPLAYS - LOGO VISIBILITY ========== //
+
+    function clpl_logo_display_field_callback(){
+
+        $logo_display = esc_attr(clpl_get_option('logo_display'));
+        
+        echo'<div class="clpl-section">';
+            echo'<label class="clpl-switch">';
+                echo'<input type="hidden" name="clpl_settings[logo_display]" value="0" />';
+                echo'<input type="checkbox" id="clpl_logo_display" name="clpl_settings[logo_display]" value="1"' . checked($logo_display, 1,  false) . '>';
+                echo'<span class="clpl-slider"></span>';
+            echo'</label>';
+        echo'</div>';
+    }
+
     // ========== DISPLAYS - UPLOAD LOGO  ========== //
     function clpl_logo_field_callback() {
         
         $logo_url = clpl_get_option('logo_field');
-        echo '<input type="url" name="clpl_settings[logo_field]" id="custom_login_logo" autocomplete="on" 
-            placeholder="Enter Logo URL" title="' . esc_attr($logo_url) . '" 
-            value="' . esc_url($logo_url) . '" />';
-        echo '<button class="button button-secondary" id="upload_logo">' . esc_html__('Upload Logo', 'custom-login-page-logo') . '</button>';
-        echo '<p class="description clpl_description">('.esc_html__('Upload image or enter a custom URL with http or https', 'custom-login-page-logo').')</p>';
-        
-        if (!empty($logo_url)) {
-            echo '<div id="clpl_logo_container">
-                    <img src="' . esc_url($logo_url) . '" 
-                    title="' . esc_attr(basename($logo_url)) . '" alt = "Logo image" />
-                  </div>';
-        }
+        echo'<div class="clpl-section">';
+            echo '<input type="url" name="clpl_settings[logo_field]" id="custom_login_logo" autocomplete="on" 
+                placeholder="Enter Logo URL" title="' . esc_attr($logo_url) . '" 
+                value="' . esc_url($logo_url) . '" />';
+            echo '<p class="description clpl_description">('.esc_html__('Upload image or enter a custom URL with http or https', 'custom-login-page-logo').')</p>';
+
+            echo '<div id="clpl_logo_container">';
+                if ( ! empty($logo_url) ) {
+                    echo '<img src="' . esc_url($logo_url) . '" 
+                        title="' . esc_attr(basename($logo_url)) . '" 
+                        alt="Logo image" />';
+                }
+            echo '</div>';
+            echo '<button class="button button-primary" id="upload_logo">' . esc_html__('Select Logo', 'custom-login-page-logo') . '</button>';
+            $remove_style = empty($logo_url) ? 'style="display:none;"' : '';
+            echo '<button class="button button-secondary" id="remove_logo"' . $remove_style . '>' . esc_html__('Remove Logo', 'custom-login-page-logo') . '</button>';
+        echo'</div>';
+
     }
 
     // ========== DISPLAYS - LOGO WIDTH ========== //
     function clpl_logo_width_callback() {
 
         $width = clpl_get_option('logo_width');
-        echo '<input type="number" name="clpl_settings[logo_width]" id="clpl_logo_width" min="0" max="600" 
+        echo'<div class="clpl-section">';
+            echo '<input type="number" name="clpl_settings[logo_width]" id="clpl_logo_width" min="0" max="600" 
               placeholder="100" title = "Enter logo width" value="' . esc_attr($width) . '" />';
-        echo '<p class="description clpl_description">('.esc_html__('Enter logo width', 'custom-login-page-logo').')</p>';
+            echo '<p class="description clpl_description">('.esc_html__('Enter logo width', 'custom-login-page-logo').')</p>';
+        echo'</div>';
     }
 
     // ========== DISPLAYS - LOGO WIDTH MEASUREMENT UNIT ========== //
     function clpl_logo_width_unit_callback() {
         
         $width_mmt = esc_attr(clpl_get_option('logo_width_unit'));
-        echo '<select name="clpl_settings[logo_width_unit]" id="clpl_logo_width_unit" title = "Enter logo width measurement unit">
+        echo'<div class="clpl-section">';
+            echo '<select name="clpl_settings[logo_width_unit]" id="clpl_logo_width_unit" title = "Enter logo width measurement unit">
                 <option value="px" ' . selected($width_mmt, 'px', false) . '>Pixels (px)</option>
                 <option value="%" ' . selected($width_mmt, '%', false) . '>Percentage (%)</option>
               </select>';
-        echo '<p class="description clpl_description">('.esc_html__('Choose the measurement unit for logo width', 'custom-login-page-logo').')</p>';
+            echo '<p class="description clpl_description">('.esc_html__('Choose the measurement unit for logo width', 'custom-login-page-logo').')</p>';
+        echo'</div>';
     }
 
     // ========== DISPLAYS - LOGO HEIGHT ========== //
     function clpl_logo_height_callback() {
 
         $height = clpl_get_option('logo_height');
-        echo '<input type="number" name="clpl_settings[logo_height]" id="clpl_logo_height" min="0" max="600" 
+        echo'<div class="clpl-section">';
+            echo '<input type="number" name="clpl_settings[logo_height]" id="clpl_logo_height" min="0" max="600" 
               placeholder="100" title = "Enter logo height" value="' . esc_attr($height) . '" />';
-        echo '<p class="description clpl_description">('.esc_html__('Enter logo height', 'custom-login-page-logo').')</p>';
+            echo '<p class="description clpl_description">('.esc_html__('Enter logo height', 'custom-login-page-logo').')</p>';
+        echo'</div>';
     }
 
     // ========== DISPLAYS LOGO HEIGHT MEASUREMENT UNIT ========== //
     function clpl_logo_height_unit_callback() {
 
         $height_mmt = esc_attr(clpl_get_option('logo_height_unit'));
-        echo '<select name="clpl_settings[logo_height_unit]" id="clpl_logo_height_unit" title = "Enter logo height measurement unit">
+        echo'<div class="clpl-section">';
+            echo '<select name="clpl_settings[logo_height_unit]" id="clpl_logo_height_unit" title = "Enter logo height measurement unit">
                 <option value="px" ' . selected($height_mmt, 'px', false) . '>Pixels (px)</option>
                 <option value="%" ' . selected($height_mmt, '%', false) . '>Percentage (%)</option>
               </select>';
-        echo '<p class="description clpl_description">('.esc_html__('Choose the measurement unit for logo height', 'custom-login-page-logo').')</p>';
+            echo '<p class="description clpl_description">('.esc_html__('Choose the measurement unit for logo height', 'custom-login-page-logo').')</p>';
+        echo'</div>';
     }
 
     // ========== DISPLAYS LOGO REDIRECT URL ========== //
@@ -149,40 +178,66 @@
         $logo_redirect_url = esc_url(clpl_get_option('logo_redirect_url'));
         if(empty($logo_redirect_url)){
             $logo_redirect_url = site_url(); 
-        } 
-        echo '<input type="url" name="clpl_settings[logo_redirect_url]" id="clpl_logo_redirect_url" autocomplete="on"
+        }
+        echo'<div class="clpl-section">';
+            echo '<input type="url" name="clpl_settings[logo_redirect_url]" id="clpl_logo_redirect_url" autocomplete="on"
               placeholder="Enter Logo Redirect URL" title="' . esc_attr($logo_redirect_url) . '" 
               value="' . esc_attr($logo_redirect_url) . '" />';
-        echo'<p class="description clpl_description">('.esc_html__('Example: https://mydomain.com or http://mydomain.com', 'custom-login-page-logo').')</p>';
+            echo'<p class="description clpl_description">('.esc_html__('Example: https://mydomain.com or http://mydomain.com', 'custom-login-page-logo').')</p>';
+        echo'</div>';
     }
 
     // ========== DISPLAYS LOGO SHADOW ========== //
     function clpl_logo_shadow_callback() {
 
         $logo_shadow = esc_attr(clpl_get_option('logo_shadow'));
-        echo'<input type="hidden" name="clpl_settings[logo_shadow]" value="0" />';
-        echo '<input type="checkbox" name="clpl_settings[logo_shadow]" id="clpl_logo_shadow" title="show shadow" 
+        echo'<div class="clpl-section">';
+            echo'<input type="hidden" name="clpl_settings[logo_shadow]" value="0" />';
+            echo '<input type="checkbox" name="clpl_settings[logo_shadow]" id="clpl_logo_shadow" title="show shadow" 
               value="1" ' . checked($logo_shadow, '1', false) . ' />';
-        echo '<label for="clpl_logo_shadow">'.esc_html__('Yes', 'custom-login-page-logo').'</label>';
-        echo '<p class="description clpl_description">('.esc_html__('Select if you want logo shadow', 'custom-login-page-logo').')</p>';
+            echo '<label for="clpl_logo_shadow">'.esc_html__('Yes', 'custom-login-page-logo').'</label>';
+            echo '<p class="description clpl_description">('.esc_html__('Select if you want logo shadow', 'custom-login-page-logo').')</p>';
+        echo'</div>';
     }
 
     // ========== DISPLAYS LOGO BORDER-RADIUS ========== //
     function clpl_logo_border_radius_callback() {
 
         $logo_border_radius = clpl_get_option('logo_border_radius');
-        echo '<input type="number" name="clpl_settings[logo_border_radius]" id="clpl_logo_border_radius" title="Enter logo border-radius" max = "250" min = "0" placeholder = "5"
+        echo'<div class="clpl-section">';
+            echo '<input type="number" name="clpl_settings[logo_border_radius]" id="clpl_logo_border_radius" title="Enter logo border-radius" max = "250" min = "0" placeholder = "5"
               value="' . esc_attr($logo_border_radius) . '" />';
-        echo '<p class="description clpl_description">('.esc_html__('Enter logo border radius in "px"', 'custom-login-page-logo').')</p>';
+            echo '<p class="description clpl_description">('.esc_html__('Enter logo border radius in "px"', 'custom-login-page-logo').')</p>';
+        echo'</div>';
     }
 
     // ========== DISPLAYS LOGO PADDING ========== //
     function clpl_logo_padding_callback() {
 
         $logo_padding = clpl_get_option('logo_padding');
-        echo '<input type="number" name="clpl_settings[logo_padding]" id="clpl_logo_padding" title="Enter logo padding" max = "100" min = "0" placeholder = "5"
+        echo'<div class="clpl-section">';
+            echo '<input type="number" name="clpl_settings[logo_padding]" id="clpl_logo_padding" title="Enter logo padding" max = "100" min = "0" placeholder = "5"
               value="' . esc_attr($logo_padding) . '" />';
-        echo '<p class="description clpl_description">('.esc_html__('Enter logo padding in "px"', 'custom-login-page-logo').')</p>';
+            echo '<p class="description clpl_description">('.esc_html__('Enter logo padding in "px"', 'custom-login-page-logo').')</p>';
+        echo'</div>';
+    }
+
+    // ========== DISPLAYS BG TYPE ========== //
+
+    function clpl_bg_type_callback(){
+
+        $background_type = clpl_get_option('background_type') ?: 'color';
+        echo'<div class="clpl-section">';?>
+            <label>
+                <input type="radio" name="clpl_settings[background_type]" value="color"
+                <?php checked($background_type, 'color'); ?>> Color
+            </label>
+            <label>
+                <input type="radio" name="clpl_settings[background_type]" value="image"
+                <?php checked($background_type, 'image'); ?>> Image
+            </label>
+            
+        <?php echo'</div>'; 
     }
 
     // ========== DISPLAYS BACKGROUND COLOR ========== //
@@ -416,6 +471,21 @@
         echo '<p class="description clpl_description">('.esc_html__('Select form Input field text color', 'custom-login-page-logo').')</p>';
     }
 
+    // ========== DISPLAYS - LANGUAGE SWITCHER VISIBILITY ========== //
+
+    function clpl_lang_switch_display_field_callback(){
+
+        $lang_switch_display = esc_attr(clpl_get_option('lang_switch_display'));
+        
+        echo'<div class="clpl-section">';
+            echo'<label class="clpl-switch">';
+                echo'<input type="hidden" name="clpl_settings[lang_switch_display]" value="0" />';
+                echo'<input type="checkbox" id="clpl_lang_switch_display" name="clpl_settings[lang_switch_display]" value="1"' . checked($lang_switch_display, 1,  false) . '>';
+                echo'<span class="clpl-slider"></span>';
+            echo'</label>';
+        echo'</div>';
+    }
+
     // ========== DISPLAYS LANGUAGE SWITCHER BG COLOR ========== //
 
     function clpl_lang_switch_select_bg_color_callback(){
@@ -626,29 +696,231 @@
     function clpl_logo_settings_init() {
 
     	// ADDING SETTING'S SECTIONS //
+
         add_settings_section(
-            'clpl_logo_section',
-            __('Logo Settings', 'custom-login-page-logo'),
+            'clpl_logo_display_section',
+            __('Logo Visibility', 'custom-login-page-logo'),
             '__return_false',
-            'clpl_logo_tab'
+            'clpl_logo_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper">',
+                'after_section'  => '</div>'
+            )
         );
         add_settings_section(
-            'clpl_background_section',
-            __('Background Settings', 'custom-login-page-logo'),
+            'clpl_upload_logo_section',
+            __('Logo', 'custom-login-page-logo'),
             '__return_false',
-            'clpl_background_tab'
+            'clpl_logo_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-logo'
+            )
         );
         add_settings_section(
-            'clpl_form_section',
-            __('Form Settings', 'custom-login-page-logo'),
+            'clpl_logo_dimensions_section',
+            __('Logo Dimensions', 'custom-login-page-logo'),
             '__return_false',
-            'clpl_form_tab'
+            'clpl_logo_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-logo'
+            )
         );
         add_settings_section(
-            'clpl_language_section',
-            __('Language Settings', 'custom-login-page-logo'),
+            'clpl_logo_appearance_section',
+            __('Logo Appearance', 'custom-login-page-logo'),
             '__return_false',
-            'clpl_language_tab'
+            'clpl_logo_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-logo'
+            )
+        );
+        add_settings_section(
+            'clpl_logo_behavior_section',
+            __('Logo Behavior', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_logo_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-logo'
+            )
+        );
+        add_settings_section(
+            'clpl_bg_type_section',
+            __('Background Type', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_background_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-bg-type'
+            )
+        );
+        add_settings_section(
+            'clpl_bg_color_section',
+            __('Background Color', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_background_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-bg-type clpl-section-wrapper-bg-type-color'
+            )
+        );
+        add_settings_section(
+            'clpl_bg_image_section',
+            __('Background Image', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_background_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-bg-type clpl-section-wrapper-bg-type-img'
+            )
+        );
+        add_settings_section(
+            'clpl_bg_image_display_options_section',
+            __('Image Display Options', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_background_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-bg-type clpl-section-wrapper-bg-type-img'
+            )
+        );
+        add_settings_section(
+            'clpl_bg_overlay_section',
+            __('Overlay', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_background_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-bg-type clpl-section-wrapper-bg-type-img'
+            )
+        );
+        add_settings_section(
+            'clpl_login_form_bg_color_section',
+            __('Background Color', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_form_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper">',
+                'after_section'  => '</div>'
+            )
+        );
+        add_settings_section(
+            'clpl_login_form_txt_color_section',
+            __('Text Color', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_form_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper">',
+                'after_section'  => '</div>'
+            )
+        );
+        add_settings_section(
+            'clpl_login_form_border_color_section',
+            __('Border Color', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_form_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper">',
+                'after_section'  => '</div>'
+            )
+        );
+        add_settings_section(
+            'clpl_login_form_remember_me_color_section',
+            __('Remember me', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_form_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper">',
+                'after_section'  => '</div>'
+            )
+        );
+        add_settings_section(
+            'clpl_language_switch_display_section',
+            __('Language Switcher Visibility', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_language_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper">',
+                'after_section'  => '</div>'
+            )
+        );
+        add_settings_section(
+            'clpl_language_switch_bg_color_section',
+            __('Background color', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_language_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-lang-switch'
+            )
+        );
+        add_settings_section(
+            'clpl_language_switch_txt_color_section',
+            __('Text color', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_language_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-lang-switch'
+            )
+        );
+        add_settings_section(
+            'clpl_language_switch_border_color_section',
+            __('Border color', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_language_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-lang-switch'
+            )
+        );
+        add_settings_section(
+            'clpl_language_switch_select_hover_color_section',
+            __('Language Switcher Hover', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_language_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-lang-switch'
+            )
+        );
+        add_settings_section(
+            'clpl_language_switch_btn_hover_color_section',
+            __('Button Hover', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_language_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-lang-switch'
+            )
+        );
+        add_settings_section(
+            'clpl_language_switch_focus_color_section',
+            __('Language Switcher Focus', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_language_tab',
+            array(
+                'before_section' => '<div class = "clpl-section-wrapper %s">',
+                'after_section'  => '</div>',
+                'section_class'  => 'clpl-section-wrapper-lang-switch'
+            )
         );
         add_settings_section(
             'clpl_advanced_section',
@@ -660,311 +932,334 @@
         // ADDING SETTING'S FIELDS //
 
         add_settings_field(
+            'clpl_logo_display_field',
+            __('Logo Display', 'custom-login-page-logo'), // CUSTOM LOGO URL
+            'clpl_logo_display_field_callback',
+            'clpl_logo_tab',
+            'clpl_logo_display_section',
+        );
+        add_settings_field(
             'clpl_logo_field',
-            __('Logo URL', 'custom-login-page-logo'), // CUSTOM LOGO URL
+            __('Upload Logo', 'custom-login-page-logo'), // CUSTOM LOGO URL
             'clpl_logo_field_callback',
             'clpl_logo_tab',
-            'clpl_logo_section'
+            'clpl_upload_logo_section',
         );
         add_settings_field(
             'clpl_logo_width',
-            __('Logo Width', 'custom-login-page-logo'), // CUSTOM LOGO WIDTH
+            __('Width', 'custom-login-page-logo'), // CUSTOM LOGO WIDTH
             'clpl_logo_width_callback',
             'clpl_logo_tab',
-            'clpl_logo_section'
+            'clpl_logo_dimensions_section'
         );
         add_settings_field(
             'clpl_logo_width_unit',
-             __('Logo Width Unit', 'custom-login-page-logo'), // CUSTOM LOGO WIDTH MEASUREMENT UNIT
+             __('Width Unit', 'custom-login-page-logo'), // CUSTOM LOGO WIDTH MEASUREMENT UNIT
             'clpl_logo_width_unit_callback',
             'clpl_logo_tab',
-            'clpl_logo_section'
+            'clpl_logo_dimensions_section'
         );
         add_settings_field(
             'clpl_logo_height',
-            __('Logo Height', 'custom-login-page-logo'), // CUSTOM LOGO HEIGHT
+            __('Height', 'custom-login-page-logo'), // CUSTOM LOGO HEIGHT
             'clpl_logo_height_callback',
             'clpl_logo_tab',
-            'clpl_logo_section'
+            'clpl_logo_dimensions_section'
         );
         add_settings_field(
             'clpl_logo_height_unit',
-             __('Logo Height Unit', 'custom-login-page-logo'), // CUSTOM LOGO HEIGHT MEASUREMENT UNIT
+             __('Height Unit', 'custom-login-page-logo'), // CUSTOM LOGO HEIGHT MEASUREMENT UNIT
             'clpl_logo_height_unit_callback',
             'clpl_logo_tab',
-            'clpl_logo_section'
+            'clpl_logo_dimensions_section'
         );
-        add_settings_field(
-            'clpl_logo_redirect_url',
-             __('Logo Redirect URL', 'custom-login-page-logo'), // CUSTOM LOGO REDIRECT URL
-            'clpl_logo_redirect_url_callback',
-            'clpl_logo_tab',
-            'clpl_logo_section'
-        );
+        
         add_settings_field(
             'clpl_logo_shadow',
-             __('Logo Shadow', 'custom-login-page-logo'), // CUSTOM LOGO SHADOW
+             __('Shadow', 'custom-login-page-logo'), // CUSTOM LOGO SHADOW
             'clpl_logo_shadow_callback',
             'clpl_logo_tab',
-            'clpl_logo_section'
+            'clpl_logo_appearance_section'
         );
         add_settings_field(
             'clpl_logo_border_radius',
-             __('Logo Border Radius', 'custom-login-page-logo'), // CUSTOM LOGO BORDER-RADIUS
+             __('Border Radius', 'custom-login-page-logo'), // CUSTOM LOGO BORDER-RADIUS
             'clpl_logo_border_radius_callback',
             'clpl_logo_tab',
-            'clpl_logo_section'
+            'clpl_logo_appearance_section'
         );
         add_settings_field(
             'clpl_logo_padding',
-             __('Logo Padding', 'custom-login-page-logo'), // CUSTOM LOGO PADDING
+            __('Padding', 'custom-login-page-logo'), // CUSTOM LOGO PADDING
             'clpl_logo_padding_callback',
             'clpl_logo_tab',
-            'clpl_logo_section'
+            'clpl_logo_appearance_section'
+        );
+        add_settings_field(
+            'clpl_logo_redirect_url',
+             __('Redirect URL', 'custom-login-page-logo'), // CUSTOM LOGO REDIRECT URL
+            'clpl_logo_redirect_url_callback',
+            'clpl_logo_tab',
+            'clpl_logo_behavior_section'
+        );
+        add_settings_field(
+            'clpl_background_type',
+            __('Choose Background Type', 'custom-login-page-logo'), // BG TYPE
+            'clpl_bg_type_callback',
+            'clpl_background_tab',
+            'clpl_bg_type_section'
         );
         add_settings_field(
             'clpl_background_color',
-             __('Background Color', 'custom-login-page-logo'), // BACKGROUND COLOR
+            __('Choose Background Color', 'custom-login-page-logo'), // BG COLOR
             'clpl_background_color_callback',
             'clpl_background_tab',
-            'clpl_background_section'
+            'clpl_bg_color_section'
         );
         add_settings_field(
             'clpl_background_image',
-             __('Background Image', 'custom-login-page-logo'), // BACKGROUND IMAGE
+            __('Upload Background Image', 'custom-login-page-logo'), // BG IMAGE
             'clpl_background_image_callback',
             'clpl_background_tab',
-            'clpl_background_section'
+            'clpl_bg_image_section'
         );
         add_settings_field(
             'clpl_background_image_size',
-             __('Background Image Size', 'custom-login-page-logo'), // BACKGROUND IMAGE SIZE
+             __('Size', 'custom-login-page-logo'), // BG IMAGE SIZE
             'clpl_background_image_size_callback',
             'clpl_background_tab',
-            'clpl_background_section'
+            'clpl_bg_image_display_options_section'
         );
         add_settings_field(
             'clpl_background_image_position',
-             __('Background Image Position', 'custom-login-page-logo'), // BACKGROUND IMAGE POSITION
+             __('Position', 'custom-login-page-logo'), // BG IMAGE POSITION
             'clpl_background_image_position_callback',
             'clpl_background_tab',
-            'clpl_background_section'
+            'clpl_bg_image_display_options_section'
         );
         add_settings_field(
             'clpl_background_image_repeat',
-             __('Background Image Repeat', 'custom-login-page-logo'), // BACKGROUND IMAGE REPEAT
+             __('Repeat', 'custom-login-page-logo'), // BG IMAGE REPEAT
             'clpl_background_image_repeat_callback',
             'clpl_background_tab',
-            'clpl_background_section'
+            'clpl_bg_image_display_options_section'
         );
         add_settings_field(
             'clpl_background_overlay_color',
-             __('Background Overlay Color', 'custom-login-page-logo'), // BACKGROUND OVERLAY COLOR
+             __('Overlay Color', 'custom-login-page-logo'), // BG OVERLAY COLOR
             'clpl_background_overlay_color_callback',
             'clpl_background_tab',
-            'clpl_background_section'
+            'clpl_bg_overlay_section'
         );
 
         // ========== FORM SETTINGS FIELDS ========== //
         
         add_settings_field(
             'clpl_form_background',
-             __('Form Background Color', 'custom-login-page-logo'), // FORM BACKGROUND
+             __('Login Form', 'custom-login-page-logo'), // FORM BG
             'clpl_form_background_color_callback',
             'clpl_form_tab',
-            'clpl_form_section'
+            'clpl_login_form_bg_color_section'
         );
         add_settings_field(
             'clpl_form_btn_background',
-             __('Form Button Color', 'custom-login-page-logo'), // FORM BUTTON BACKGROUND
+             __('Button', 'custom-login-page-logo'), // FORM BUTTON BG
             'clpl_form_btn_bg_color_callback',
             'clpl_form_tab',
-            'clpl_form_section'
-        );
-        add_settings_field(
-            'clpl_form_eye_icon_color',
-             __('Form Eye Icon Color', 'custom-login-page-logo'), // FORM EYE ICON COLOR
-            'clpl_form_eye_icon_color_callback',
-            'clpl_form_tab',
-            'clpl_form_section'
-        );
-        add_settings_field(
-            'clpl_form_label_color',
-             __('Form Label Color', 'custom-login-page-logo'), // FORM LABEL COLOR
-            'clpl_form_label_color_callback',
-            'clpl_form_tab',
-            'clpl_form_section'
-        );
-        add_settings_field(
-            'clpl_form_btn_txt_color',
-             __('Form Button Text Color', 'custom-login-page-logo'), // FORM BUTTON TEXT COLOR
-            'clpl_form_btn_txt_color_callback',
-            'clpl_form_tab',
-            'clpl_form_section'
-        );
-        add_settings_field(
-            'clpl_form_btn_border_color',
-             __('Form Button Border Color', 'custom-login-page-logo'), // FORM BUTTON TEXT COLOR
-            'clpl_form_btn_border_color_callback',
-            'clpl_form_tab',
-            'clpl_form_section'
-        );
-        add_settings_field(
-            'clpl_form_txtfield_border_color',
-             __('Form Inputfield Border Color', 'custom-login-page-logo'), // FORM TEXTFIELD BORDER COLOR
-            'clpl_form_txtfield_border_color_callback',
-            'clpl_form_tab',
-            'clpl_form_section'
+            'clpl_login_form_bg_color_section'
         );
         add_settings_field(
             'clpl_form_txtfield_bg_color',
-             __('Form Input field Background Color', 'custom-login-page-logo'), // FORM TEXTFIELD BORDER COLOR
+             __('Input field', 'custom-login-page-logo'), // FORM TEXTFIELD BG COLOR
             'clpl_form_txtfield_bg_color_callback',
             'clpl_form_tab',
-            'clpl_form_section'
+            'clpl_login_form_bg_color_section'
+        );
+        add_settings_field(
+            'clpl_form_label_color',
+             __('Label', 'custom-login-page-logo'), // FORM LABEL COLOR
+            'clpl_form_label_color_callback',
+            'clpl_form_tab',
+            'clpl_login_form_txt_color_section'
         );
         add_settings_field(
             'clpl_form_txtfield_txt_color',
-             __('Form Input field Text Color', 'custom-login-page-logo'), // FORM TEXTFIELD BORDER COLOR
+             __('Input field', 'custom-login-page-logo'), // FORM TEXTFIELD TEXT COLOR
             'clpl_form_txtfield_txt_color_callback',
             'clpl_form_tab',
-            'clpl_form_section'
+            'clpl_login_form_txt_color_section'
         );
         add_settings_field(
-            'clpl_form_remember_checkmark_color',
-             __('Form Remember Checkmark Color', 'custom-login-page-logo'), // FORM REMEMBER CHECKMARK COLOR
-            'clpl_form_remember_checkmark_color_callback',
+            'clpl_form_eye_icon_color',
+             __('Eye Icon', 'custom-login-page-logo'), // FORM EYE ICON COLOR
+            'clpl_form_eye_icon_color_callback',
             'clpl_form_tab',
-            'clpl_form_section'
+            'clpl_login_form_txt_color_section'
+        );
+        
+        add_settings_field(
+            'clpl_form_btn_txt_color',
+             __('Button', 'custom-login-page-logo'), // FORM BUTTON TEXT COLOR
+            'clpl_form_btn_txt_color_callback',
+            'clpl_form_tab',
+            'clpl_login_form_txt_color_section'
         );
         add_settings_field(
             'clpl_form_pwd_reset_color',
-             __('Form Password Reset Color', 'custom-login-page-logo'), // FORM PASSWORD RESET COLOR
+             __('Password Reset', 'custom-login-page-logo'), // FORM PASSWORD RESET COLOR
             'clpl_form_pwd_reset_color_callback',
             'clpl_form_tab',
-            'clpl_form_section'
+            'clpl_login_form_txt_color_section'
         );
         add_settings_field(
             'clpl_form_go_to_site_color',
-             __('Form Go to Site Color', 'custom-login-page-logo'), // FORM GO TO SITE COLOR
+             __('Go to Site', 'custom-login-page-logo'), // FORM GO TO SITE COLOR
             'clpl_form_go_to_site_color_callback',
             'clpl_form_tab',
-            'clpl_form_section'
+            'clpl_login_form_txt_color_section'
+        );
+        add_settings_field(
+            'clpl_form_btn_border_color',
+             __('Button', 'custom-login-page-logo'), // FORM BUTTON BORDER COLOR
+            'clpl_form_btn_border_color_callback',
+            'clpl_form_tab',
+            'clpl_login_form_border_color_section'
+        );
+        add_settings_field(
+            'clpl_form_txtfield_border_color',
+             __('Input field', 'custom-login-page-logo'), // FORM TEXTFIELD BORDER COLOR
+            'clpl_form_txtfield_border_color_callback',
+            'clpl_form_tab',
+            'clpl_login_form_border_color_section'
+        );
+        add_settings_field(
+            'clpl_form_remember_checkmark_color',
+             __('Checkmark Color', 'custom-login-page-logo'), // FORM REMEMBER CHECKMARK COLOR
+            'clpl_form_remember_checkmark_color_callback',
+            'clpl_form_tab',
+            'clpl_login_form_remember_me_color_section'
         );
 
         // ========== LANGUAGE SWITCHER SETTINGS FIELDS ========== //
 
         add_settings_field(
+            'clpl_lang_switch_display_field',
+            __('Language Switcher Display', 'custom-login-page-logo'), // CUSTOM LOGO URL
+            'clpl_lang_switch_display_field_callback',
+            'clpl_language_tab',
+            'clpl_language_switch_display_section',
+        );
+        add_settings_field(
             'clpl_lang_switch_select_bg_color',
-             __('Language Switcher Background color', 'custom-login-page-logo'), // LANGUAGE SWITCHER BG COLOR
+             __('Language Switcher', 'custom-login-page-logo'), // LANGUAGE SWITCHER BG COLOR
             'clpl_lang_switch_select_bg_color_callback',
             'clpl_language_tab',
-            'clpl_language_section'
-        );
-        add_settings_field(
-            'clpl_lang_switch_select_txt_color',
-             __('Language Switcher Text color', 'custom-login-page-logo'), // LANGUAGE SWITCHER TEXT COLOR
-            'clpl_lang_switch_select_txt_color_callback',
-            'clpl_language_tab',
-            'clpl_language_section'
-        );
-        add_settings_field(
-            'clpl_lang_switch_select_border_color',
-             __('Language Switcher Border color', 'custom-login-page-logo'), // LANGUAGE SWITCHER BORDER COLOR
-            'clpl_lang_switch_select_border_color_callback',
-            'clpl_language_tab',
-            'clpl_language_section'
-        );
-        add_settings_field(
-            'clpl_lang_switch_select_drop_down_color',
-             __('Drop Down Arrow color', 'custom-login-page-logo'), // LANGUAGE SWITCHER DROP DOWN COLOR
-            'clpl_lang_switch_select_arrow_color_callback',
-            'clpl_language_tab',
-            'clpl_language_section'
-        );
-        add_settings_field(
-            'clpl_lang_switch_select_hover_bg_color',
-             __('Language Switcher Hover Background Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER HOVER BG COLOR
-            'clpl_lang_switch_select_hover_bg_color_callback',
-            'clpl_language_tab',
-            'clpl_language_section'
-        );
-        add_settings_field(
-            'clpl_lang_switch_select_hover_txt_color',
-             __('Language Switcher Hover Text Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER HOVER TEXT COLOR
-            'clpl_lang_switch_select_hover_txt_color_callback',
-            'clpl_language_tab',
-            'clpl_language_section'
-        );
-        add_settings_field(
-            'clpl_lang_switch_select_hover_border_color',
-             __('Language Switcher Hover Border Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER HOVER BORDER COLOR
-            'clpl_lang_switch_select_hover_border_color_callback',
-            'clpl_language_tab',
-            'clpl_language_section'
-        );
-        add_settings_field(
-            'clpl_lang_switch_select_focus_bg_color',
-             __('Language Switcher Focus Background Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER FOCUS BG COLOR
-            'clpl_lang_switch_select_focus_bg_color_callback',
-            'clpl_language_tab',
-            'clpl_language_section'
-        );
-        add_settings_field(
-            'clpl_lang_switch_select_focus_txt_color',
-             __('Language Switcher Focus Text Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER FOCUS TEXT COLOR
-            'clpl_lang_switch_select_focus_txt_color_callback',
-            'clpl_language_tab',
-            'clpl_language_section'
-        );
-        add_settings_field(
-            'clpl_lang_switch_select_focus_border_color',
-             __('Language Switcher Focus Border Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER FOCUS BORDER COLOR
-            'clpl_lang_switch_select_focus_border_color_callback',
-            'clpl_language_tab',
-            'clpl_language_section'
+            'clpl_language_switch_bg_color_section'
         );
         add_settings_field(
             'clpl_lang_switch_btn_bg_color',
-             __('Button Background color', 'custom-login-page-logo'), // LANGUAGE SWITCHER BUTTON BG COLOR
+             __('Button', 'custom-login-page-logo'), // LANGUAGE SWITCHER BUTTON BG COLOR
             'clpl_lang_switch_btn_bg_color_callback',
             'clpl_language_tab',
-            'clpl_language_section'
+            'clpl_language_switch_bg_color_section'
+        );
+        add_settings_field(
+            'clpl_lang_switch_select_txt_color',
+             __('Language Switcher', 'custom-login-page-logo'), // LANGUAGE SWITCHER TEXT COLOR
+            'clpl_lang_switch_select_txt_color_callback',
+            'clpl_language_tab',
+            'clpl_language_switch_txt_color_section'
+        );
+        add_settings_field(
+            'clpl_lang_switch_select_drop_down_color',
+             __('Drop Down Arrow', 'custom-login-page-logo'), // LANGUAGE SWITCHER DROP DOWN COLOR
+            'clpl_lang_switch_select_arrow_color_callback',
+            'clpl_language_tab',
+            'clpl_language_switch_txt_color_section'
         );
         add_settings_field(
             'clpl_lang_switch_btn_txt_color',
-             __('Button Text color', 'custom-login-page-logo'), // LANGUAGE SWITCHER BUTTON TEXT COLOR
+             __('Button', 'custom-login-page-logo'), // LANGUAGE SWITCHER BUTTON TEXT COLOR
             'clpl_lang_switch_btn_txt_color_callback',
             'clpl_language_tab',
-            'clpl_language_section'
+            'clpl_language_switch_txt_color_section'
+        );
+        add_settings_field(
+            'clpl_lang_switch_select_border_color',
+             __('Language Switcher', 'custom-login-page-logo'), // LANGUAGE SWITCHER BORDER COLOR
+            'clpl_lang_switch_select_border_color_callback',
+            'clpl_language_tab',
+            'clpl_language_switch_border_color_section'
         );
         add_settings_field(
             'clpl_lang_switch_btn_border_color',
-             __('Button Border color', 'custom-login-page-logo'), // LANGUAGE SWITCHER BUTTON BORDER COLOR
+             __('Button', 'custom-login-page-logo'), // LANGUAGE SWITCHER BUTTON BORDER COLOR
             'clpl_lang_switch_btn_border_color_callback',
             'clpl_language_tab',
-            'clpl_language_section'
+            'clpl_language_switch_border_color_section'
+        );        
+        add_settings_field(
+            'clpl_lang_switch_select_hover_bg_color',
+             __('Background Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER HOVER BG COLOR
+            'clpl_lang_switch_select_hover_bg_color_callback',
+            'clpl_language_tab',
+            'clpl_language_switch_select_hover_color_section'
+        );
+        add_settings_field(
+            'clpl_lang_switch_select_hover_txt_color',
+             __('Text Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER HOVER TEXT COLOR
+            'clpl_lang_switch_select_hover_txt_color_callback',
+            'clpl_language_tab',
+            'clpl_language_switch_select_hover_color_section'
+        );
+        add_settings_field(
+            'clpl_lang_switch_select_hover_border_color',
+             __('Border Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER HOVER BORDER COLOR
+            'clpl_lang_switch_select_hover_border_color_callback',
+            'clpl_language_tab',
+            'clpl_language_switch_select_hover_color_section'
         );
         add_settings_field(
             'clpl_lang_switch_btn_hover_bg_color',
-             __('Button Hover Background Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER BUTTON BG COLOR
+             __('Background Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER BUTTON BG COLOR
             'clpl_lang_switch_btn_hover_bg_color_callback',
             'clpl_language_tab',
-            'clpl_language_section'
+            'clpl_language_switch_btn_hover_color_section'
         );
         add_settings_field(
             'clpl_lang_switch_btn_hover_txt_color',
-             __('Button Hover Text Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER BUTTON HOVER TEXT COLOR
+             __('Text Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER BUTTON HOVER TEXT COLOR
             'clpl_lang_switch_btn_hover_txt_color_callback',
             'clpl_language_tab',
-            'clpl_language_section'
+            'clpl_language_switch_btn_hover_color_section'
         );
         add_settings_field(
             'clpl_lang_switch_btn_hover_border_color',
-             __('Button Hover Border Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER BUTTON HOVER BORDER COLOR
+             __('Border Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER BUTTON HOVER BORDER COLOR
             'clpl_lang_switch_btn_hover_border_color_callback',
             'clpl_language_tab',
-            'clpl_language_section'
+            'clpl_language_switch_btn_hover_color_section'
+        );
+        add_settings_field(
+            'clpl_lang_switch_select_focus_bg_color',
+             __('Background Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER FOCUS BG COLOR
+            'clpl_lang_switch_select_focus_bg_color_callback',
+            'clpl_language_tab',
+            'clpl_language_switch_focus_color_section'
+        );
+        add_settings_field(
+            'clpl_lang_switch_select_focus_txt_color',
+             __('Text Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER FOCUS TEXT COLOR
+            'clpl_lang_switch_select_focus_txt_color_callback',
+            'clpl_language_tab',
+            'clpl_language_switch_focus_color_section'
+        );
+        add_settings_field(
+            'clpl_lang_switch_select_focus_border_color',
+             __('Border Color', 'custom-login-page-logo'), // LANGUAGE SWITCHER FOCUS BORDER COLOR
+            'clpl_lang_switch_select_focus_border_color_callback',
+            'clpl_language_tab',
+            'clpl_language_switch_focus_color_section'
         );
 
         // ========== ADVANCED SETTINGS FIELDS ========== //
@@ -1015,6 +1310,7 @@
 
             // ========== LOGO ========== //
 
+            $sanitized['logo_display']      = ( isset($input['logo_display']) && $input['logo_display'] == 1 ) ? 1 : 0;
             $sanitized['logo_field']        = esc_url_raw($input['logo_field']);
             $sanitized['logo_width']        = intval($input['logo_width']);
             $sanitized['logo_height']       = intval($input['logo_height']);
@@ -1039,6 +1335,18 @@
             $sanitized['logo_padding']      = intval($input['logo_padding']);
 
             // ========== BACKGROUND ========== //
+
+            $background_type = sanitize_text_field(
+                $input['background_type'] ?? ''
+            );
+
+            $sanitized['background_type'] = in_array(
+                $background_type,
+                $allowed_bg_type,
+                true
+            )
+            ? $background_type
+            : $defaults['background_type'];
             
             $sanitized['background_color']  = sanitize_hex_color($input['background_color'])
             ?: $defaults['background_color'];
@@ -1121,6 +1429,8 @@
             ) ?: $defaults['form_go_to_site_color'];
 
             // ========== LANGUAGE SWITCHER ========== //
+
+            $sanitized['lang_switch_display']      = ( isset($input['lang_switch_display']) && $input['lang_switch_display'] == 1 ) ? 1 : 0;
 
             $sanitized['lang_switch_select_bg_color']   = sanitize_hex_color(
                 $input['lang_switch_select_bg_color']

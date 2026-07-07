@@ -23,6 +23,12 @@ jQuery(document).ready(function ($) {
         customLogoUploader.on('select', function () {
             var attachment = customLogoUploader.state().get('selection').first().toJSON();
             $('#custom_login_logo').val(attachment.url);
+            $('#clpl_logo_container').html(
+        '<img src="' + attachment.url + '" alt="Logo image">'
+            );
+
+            // Show remove button
+            $('#remove_logo').show();
         });
 
         // ===== OPEN MEDIA UPLOADER =====//
@@ -63,4 +69,77 @@ jQuery(document).ready(function ($) {
             
         }
     });
+
+    // ========== REMOVE LOGO ========== //
+
+    $('#remove_logo').on('click', function (e) {
+        e.preventDefault();
+        $('#clpl_logo_container').html('No Logo selected');
+        $('#custom_login_logo').val('');
+        $(this).hide();
+    });
+
+    // ========== TOGGLE LOGO DISPLAY BUTTON ========== //   
+
+    const toggleLogo = $('#clpl_logo_display');
+    const logoSections = $('.clpl-section-wrapper-logo');
+
+    function toggleLogoSections() {
+
+        if (toggleLogo.is(':checked')) {
+
+            logoSections.slideDown(250);
+
+        } else {
+
+            logoSections.slideUp(250);
+        }
+    }
+
+    toggleLogoSections();
+
+    toggleLogo.on('change', toggleLogoSections);
+
+    // ========== BACKGROUND TYPE BUTTON ========== // 
+
+    const bgType = $('input[name="clpl_settings[background_type]"]');
+    const bgSectionColor = $('.clpl-section-wrapper-bg-type-color');
+    const bgSectionImg = $('.clpl-section-wrapper-bg-type-img');
+
+    function bgTypeSections() {
+        const selectedValue = $('input[name="clpl_settings[background_type]"]:checked').val();
+
+        if(selectedValue === 'color'){
+            bgSectionColor.slideDown(250);    
+            bgSectionImg.slideUp(250);    
+        } else if (selectedValue === 'image'){
+            bgSectionColor.slideUp(250);    
+            bgSectionImg.slideDown(250);    
+        } 
+    }
+
+    bgTypeSections();
+
+    bgType.on('change', bgTypeSections);
+
+    // ========== TOGGLE LANGUAGE SWITCHER BUTTON ========== //
+        
+    const toggleLang = $('#clpl_lang_switch_display');
+    const langSections = $('.clpl-section-wrapper-lang-switch');
+
+    function toggleLangSections() {
+
+        if (toggleLang.is(':checked')) {
+
+            langSections.slideDown(250);
+
+        } else {
+
+            langSections.slideUp(250);
+        }
+    }
+
+    toggleLangSections();
+
+    toggleLang.on('change', toggleLangSections);
 });
