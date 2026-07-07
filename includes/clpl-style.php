@@ -47,6 +47,29 @@ function clpl_enqueue_styles() {
     $form_pwd_reset_color           = $options['form_pwd_reset_color'];
     $form_go_to_site_color          = $options['form_go_to_site_color'];
 
+    // ========== LANGUAGE SWITCHER ========== //
+
+    $lang_switch_select_bg_color            = $options['lang_switch_select_bg_color'];
+    $lang_switch_select_txt_color           = $options['lang_switch_select_txt_color'];
+    $lang_switch_select_border_color        = $options['lang_switch_select_border_color'];
+    $lang_switch_select_arrow_color         = $options['lang_switch_select_arrow_color'];
+
+    $lang_switch_select_hover_bg_color      = $options['lang_switch_select_hover_bg_color'];
+    $lang_switch_select_hover_txt_color     = $options['lang_switch_select_hover_txt_color'];
+    $lang_switch_select_hover_border_color  = $options['lang_switch_select_hover_border_color'];
+
+    $lang_switch_select_focus_bg_color      = $options['lang_switch_select_focus_bg_color'];
+    $lang_switch_select_focus_txt_color     = $options['lang_switch_select_focus_txt_color'];
+    $lang_switch_select_focus_border_color  = $options['lang_switch_select_focus_border_color'];
+
+    $lang_switch_btn_bg_color               = $options['lang_switch_btn_bg_color'];
+    $lang_switch_btn_txt_color              = $options['lang_switch_btn_txt_color'];
+    $lang_switch_btn_border_color           = $options['lang_switch_btn_border_color'];
+
+    $lang_switch_btn_hover_bg_color         = $options['lang_switch_btn_hover_bg_color'];
+    $lang_switch_btn_hover_txt_color        = $options['lang_switch_btn_hover_txt_color'];
+    $lang_switch_btn_hover_border_color     = $options['lang_switch_btn_hover_border_color'];
+    
     echo '<style type = text/css>    
         body.login {';
             
@@ -68,27 +91,29 @@ function clpl_enqueue_styles() {
                 echo 'background-repeat: '. esc_attr( $bg_img_rep ) . ';';
             }
             echo 'transition: background-color 0.3s ease;';
+        
         echo '}';
-            if ( ! empty( $bg_overlay_color ) ) {
-                echo'  
-                body.login {
-                    position: relative;
-                }  
-                body.login::before{
-                    content:"";
-                    position:fixed;
-                    inset:0;
-                    background:'.esc_attr($bg_overlay_color).';
-                    z-index:0;
-                    pointer-events: none;
-                }
-                body.login #login, body.login .language-switcher{
-                    position:relative;
-                    z-index:1;
-                }';
+
+        if ( ! empty( $bg_overlay_color ) ) {
+            echo'  
+            body.login {
+                position: relative;
+            }  
+            body.login::before{
+                content:"";
+                position:fixed;
+                inset:0;
+                background:'.esc_attr($bg_overlay_color).';
+                z-index:0;
+                pointer-events: none;
             }
+            body.login #login, body.login .language-switcher{
+                position:relative;
+                z-index:1;
+            }';
+        }
             
-        // ========== LOGO ========== //
+        // ========== LOGO ========== // 
 
         echo '#login h1 a {';
 
@@ -104,6 +129,7 @@ function clpl_enqueue_styles() {
             if(!empty($logo_border_radius)){
                 echo'border-radius: '.esc_attr($logo_border_radius).'px;';
             }
+
             if(!empty($logo_shadow)){
                 if($logo_shadow == 1){
                     echo '
@@ -111,12 +137,14 @@ function clpl_enqueue_styles() {
                         ';
                 }
             }
+
             if(!empty($logo_padding)){
                 echo 'padding:'.esc_attr($logo_padding).'px;
                 background-origin: content-box;';
             }
-        echo'}';  
-              
+        
+        echo'}'; 
+
         // ========== FORM ========== //
 
         if(!empty($form_bg_color)){
@@ -124,10 +152,11 @@ function clpl_enqueue_styles() {
                 background-color:'.esc_attr($form_bg_color).';
                 border:1px solid '.esc_attr($form_bg_color).';
             }';
-        }
+        } 
         if(!empty($form_btn_bg_color)){
             echo '.login .button-primary{
                 background-color:'.esc_attr($form_btn_bg_color).'!important;
+                border-color: ' . esc_attr($form_btn_bg_color) . '!important;
             }';
         }
         if(!empty($form_eye_icon_color)){
@@ -148,11 +177,6 @@ function clpl_enqueue_styles() {
         if(!empty($form_btn_border_color)){
             echo '.wp-core-ui .button-primary{
                 border-color:'.esc_attr($form_btn_border_color).'!important;
-            }';
-        }
-        if(!empty($form_txtfield_border_color)){
-            echo 'body.login #loginform input[type=text], body.login #loginform input[type=password], body.login #lostpasswordform input[type=text]{
-                border-color:'.esc_attr($form_txtfield_border_color).';
             }';
         }
         if(!empty($form_txtfield_border_color)){
@@ -204,10 +228,117 @@ function clpl_enqueue_styles() {
             }';
         }
 
+        // ========== LANGUAGE SWITCHER ========== //
+
+        if ( ! empty( $lang_switch_select_bg_color ) ) {
+
+            echo '.login .language-switcher select {
+                background: ' . esc_attr( $lang_switch_select_bg_color ) . ';
+            }';
+        }
+        if ( ! empty( $lang_switch_select_txt_color ) ) {
+
+            echo '.login .language-switcher select {
+                color: ' . esc_attr( $lang_switch_select_txt_color ) . ';
+            }';
+        }
+        if ( ! empty( $lang_switch_select_border_color ) ) {
+
+            echo '.login .language-switcher select {
+                border-color: ' . esc_attr( $lang_switch_select_border_color ) . ';
+            }';
+        }
+        if ( ! empty( $lang_switch_select_arrow_color ) ) {
+            echo'.login .language-switcher select {
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                padding-right: 30px;
+            }';
+            echo'.login .language-switcher .clpl-lang-wrap::after {
+                content:"";
+                position: relative;
+                display:inline-block;
+                transform: rotate(135deg);
+                height:10px;
+                width:10px;
+                border-right:2px solid '.esc_attr($lang_switch_select_arrow_color).';
+                border-top:2px solid '.esc_attr($lang_switch_select_arrow_color).';
+                pointer-events: none;
+                right:25px;
+            }';
+        }
+
+        if ( ! empty( $lang_switch_select_hover_bg_color ) ) {
+            echo'.login .language-switcher select:hover{
+                background-color: ' . esc_attr( $lang_switch_select_hover_bg_color ) . ';
+            }';
+        }
+        if ( ! empty( $lang_switch_select_hover_txt_color ) ) {
+            echo'.login .language-switcher select:hover{
+                color: ' . esc_attr( $lang_switch_select_hover_txt_color ) . ';
+            }';
+        }
+        if ( ! empty( $lang_switch_select_hover_border_color ) ) {
+            echo'.login .language-switcher select:hover{
+                border-color: ' . esc_attr( $lang_switch_select_hover_border_color ) . ';
+            }';
+        }
+        if ( ! empty( $lang_switch_select_focus_bg_color ) ) {
+            echo'.login .language-switcher select:focus{
+                background-color: ' . esc_attr( $lang_switch_select_focus_bg_color ) . ';
+            }';
+        }
+        if ( ! empty( $lang_switch_select_focus_txt_color ) ) {
+            echo'.login .language-switcher select:focus{
+                color: ' . esc_attr( $lang_switch_select_focus_txt_color ) . ';
+            }';
+        }
+        if ( ! empty( $lang_switch_select_focus_border_color ) ) {
+            echo'.login .language-switcher select:focus{
+                border-color: ' . esc_attr( $lang_switch_select_focus_border_color ) . ';
+            }';
+        }
+        if ( ! empty( $lang_switch_btn_bg_color ) ) {
+
+            echo '.login .language-switcher .button {
+                background: ' . esc_attr( $lang_switch_btn_bg_color ) . ';
+                border-color: ' . esc_attr( $lang_switch_btn_bg_color ) . ';
+            }';
+        }
+        if ( ! empty( $lang_switch_btn_txt_color ) ) {
+
+            echo '.login .language-switcher .button {
+                color: ' . esc_attr( $lang_switch_btn_txt_color ) . ';
+            }';
+        }
+        if ( ! empty( $lang_switch_btn_border_color ) ) {
+
+            echo '.login .language-switcher .button {
+                border-color: ' . esc_attr( $lang_switch_btn_border_color ) . ';
+            }';
+        }
+        if ( ! empty( $lang_switch_btn_hover_bg_color ) ) {
+            echo'.login .language-switcher .button:hover{
+                background-color: ' . esc_attr( $lang_switch_btn_hover_bg_color ) . ';
+            }';
+        }
+        if ( ! empty( $lang_switch_btn_hover_txt_color ) ) {
+            echo'.login .language-switcher .button:hover{
+                color: ' . esc_attr( $lang_switch_btn_hover_txt_color ) . ';
+            }';
+        }
+        if ( ! empty( $lang_switch_btn_hover_border_color ) ) {
+            echo'.login .language-switcher .button:hover{
+                border-color: ' . esc_attr( $lang_switch_btn_hover_border_color ) . ';
+            }';
+        }
+                
     echo'</style>';
 }
 
     // ========= SETS LOGO REDIRECT URL ========= //
+
     if(!empty($logo_redirect_url)){
 
         function clpl_logo_redirect_url() {

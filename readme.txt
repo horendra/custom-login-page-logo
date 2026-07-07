@@ -3,14 +3,14 @@ Contributors: Horendra
 Donate link: https://www.paypal.me/horendrasingh
 Tags: login page customizer, wordpress login logo, custom login page, white label login, login background
 Requires at least: 4.7
-Tested up to: 6.9
+Tested up to: 6.9.4
 Requires PHP: 7.4
-Stable tag: 1.4.2
-Version: 1.4.2
+Stable tag: 1.4.3
+Version: 1.4.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Customize your WordPress login page with a custom logo, login form and background to create a fully branded experience — fast, lightweight, and no coding required.
+Lightweight WordPress login customizer—logo, background, form & language switcher. No bloat, no coding.
 
 == Description ==
 
@@ -32,8 +32,8 @@ Whether you are a freelancer, agency, business owner, or developer, you can crea
 
 = Background Customization =
 
-* Set a custom background color/image
-* Control background image size (cover / contain)
+* Set a custom background color and image
+* Control background size (cover / contain)
 * Set background position
 * Configure background repeat
 * Add background overlay color and opacity
@@ -41,11 +41,19 @@ Whether you are a freelancer, agency, business owner, or developer, you can crea
 = Login Form Customization =
 
 * Login form background and label color
-* Input field background, border and text color
-* Password eye icon color
-* Login button background, text and border color
-* Set "Password reset" and "Go to site" color
-* Set "Remember" checkbox and checkmark color
+* Password eye icon and password reset color
+* Login button background, border and text color
+* Input field background, text and border color
+* Set up Remember me (checkbox and checkmark) color
+* Go to site color
+
+= Language Switcher Customization =
+
+* Language Switcher - background color, text color, border color, drop down arrow color
+* Language Switcher hover - background color, text color, border color
+* Language Switcher focus - background color, text color, border color
+* Language Switcher Button - background color, text color, border color
+* Language Switcher Button hover - background color, text color, border color
 
 = Lightweight & Optimized =
 
@@ -56,16 +64,9 @@ Whether you are a freelancer, agency, business owner, or developer, you can crea
 
 == Coming soon features ==
 
-A new tab "Language Switcher" is coming soon with the following features:
+A new look of the plugin is coming soon!
 
-* Background color and border color of Language switcher
-* Text color of Languagr Switcher, Drop down arrow and button
-* Border color of Language Switcher and Button
-* Background Color, Text color and Border of Language Switcher on Hover 
-* Background color, Text color and Border color of Button on Hover
-* Background color, Text color and Border color of Language Switcher on Hover
-
-This update will give you to seamless experience to access all the language switcher features in more organized way
+This update will give you to seamless experience to access all the features in more organized way
 so that you can design and create a more modern, branded look of your brand.
 
 Have a feature request? Let us know through a review — your feedback helps shape future updates!
@@ -143,18 +144,27 @@ YES, For support or inquiries, please fill out the following [form](https://form
 1. Logo Tab (screenshot-1.png)
 2. Background Tab (screenshot-2.png)
 3. Login form tab (screenshot-3.png)
-4. Login screen with custom login page logo (screenshot-4.png)
+4. Language Switcher Tab (screenshot-4.png)
+4. Customized Login Page (screenshot-5.png)
 
 == Changelog ==
+
+= 1.4.3 =
+* Language switcher tab is added
+* Language Switcher- background color, text color, border color and drop down arrow color is added
+* Button- background color, text color and border color is added
+* Language Switcher on hover- background color, text color and border color is added
+* Button on hover- background color, text color and border color is added
+* Language Switcher on focus- background color, text color and border color is added
 
 = 1.4.2 =
 * Login form tab is added
 * Login form background and label color are added
-* Login form Input field- background, border and text color are added
-* Login form button- background, border and text color are added
-* Login form password eye color is added
-* Login form checkmark and checkbox color are added.
-* Login form password reset color and go to site color are added
+* Input field- background, border and text color are added
+* Button- background, border and text color are added
+* Password eye icon and Password reset color are added
+* Remember me (checkmark and checkbox) color are added.
+* Go to site color is added
 
 = 1.4.1 =
 * Background Tab is added

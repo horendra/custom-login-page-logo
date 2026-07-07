@@ -24,10 +24,10 @@ function clpl_register_scripts(){
 
     // REGISTER PLUGIN STYLESHEET
     wp_register_style(
-        'custom-login-logo-style', // HANDLE
-        CLPL_URL . 'css/clpl-style.css', // SOURCE
-        array(), // DEPENDENCIES
-        CLPL_VERSION // VERSION
+        'custom-login-logo-style', 
+        CLPL_URL . 'css/clpl-style.css', 
+        array(), 
+        CLPL_VERSION 
     );
 
 }
@@ -63,6 +63,7 @@ function clpl_enqueue_scripts($hook){
     wp_localize_script('custom-login-logo-script', 'clpl_Translations', $clpl_translation_array);
 
 }
+
 function clpl_login_lang_switch_scripts() {
 
     wp_enqueue_script(
@@ -83,5 +84,4 @@ function clpl_login_lang_switch_scripts() {
 add_action('admin_enqueue_scripts', 'clpl_register_scripts');
 add_action('admin_enqueue_scripts', 'clpl_enqueue_scripts');
 add_action('login_enqueue_scripts', 'clpl_login_lang_switch_scripts');
-
 //add_action('plugins_loaded', 'clpl_load_textdomain' );

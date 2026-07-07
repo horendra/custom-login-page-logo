@@ -29,7 +29,8 @@ jQuery(document).ready(function ($) {
         customLogoUploader.open();
     });
 
-    // ===== ADD BACKGROUND IMAGE ON CLICK ON "UPLOAD BACKGROUND IMAGE" BUTTON =====//
+    // ========== ADD BACKGROUND IMAGE ON CLICK ON "UPLOAD BACKGROUND IMAGE" BUTTON ========== //
+
     $('#upload_bg_img').on('click', function (e) {
         e.preventDefault();
 
@@ -54,13 +55,12 @@ jQuery(document).ready(function ($) {
         customBGImgUploader.open();
     });
 
-    // ===== ADD COLOR PICKER =====//
-    $('#clpl_background_color, #clpl_background_overlay_color, #clpl_form_bg_color, #clpl_form_btn_bg_color, #clpl_form_eye_icon_color, #clpl_form_label_color, #clpl_form_btn_txt_color, #clpl_form_btn_border_color, #clpl_form_txtfield_bg_color, #clpl_form_txtfield_border_color, #clpl_form_txtfield_txt_color, #clpl_form_remember_checkmark_color, #clpl_form_pwd_reset_color, #clpl_form_go_to_site_color').wpColorPicker({
+    // ========== ADD COLOR PICKER ========== //
+    $('#clpl_background_color, #clpl_background_overlay_color, #clpl_form_bg_color, #clpl_form_btn_bg_color, #clpl_form_eye_icon_color, #clpl_form_label_color, #clpl_form_btn_txt_color, #clpl_form_btn_border_color, #clpl_form_txtfield_border_color, #clpl_form_txtfield_bg_color, #clpl_form_txtfield_txt_color, #clpl_form_remember_checkmark_color, #clpl_form_pwd_reset_color, #clpl_form_go_to_site_color, #clpl_lang_switch_select_bg_color, #clpl_lang_switch_select_txt_color, #clpl_lang_switch_select_border_color, #clpl_lang_switch_select_arrow_color, #clpl_lang_switch_select_hover_bg_color, #clpl_lang_switch_select_hover_txt_color, #clpl_lang_switch_select_hover_border_color, #clpl_lang_switch_select_focus_bg_color, #clpl_lang_switch_select_focus_txt_color, #clpl_lang_switch_select_focus_border_color, #clpl_lang_switch_btn_bg_color, #clpl_lang_switch_btn_txt_color, #clpl_lang_switch_btn_border_color, #clpl_lang_switch_btn_hover_bg_color, #clpl_lang_switch_btn_hover_txt_color, #clpl_lang_switch_btn_hover_border_color').wpColorPicker({
         palettes: true,
         change: function(event, ui) {
             // Optional: do something on change
             
         }
     });
-
 });
