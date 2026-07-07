@@ -14,13 +14,20 @@ function clpl_register_scripts(){
         CLPL_VERSION, // VERSION
         true // IN FOOTER
     );
+    wp_register_script(
+        'clpl-color-picker-alpha',
+        CLPL_URL . 'js/wp-color-picker-alpha.min.js',
+        array('wp-color-picker'),
+        CLPL_VERSION,
+        true
+    );
 
     // REGISTER PLUGIN STYLESHEET
     wp_register_style(
-        'custom-login-logo-style', // HANDLE
-        CLPL_URL . 'css/clpl-style.css', // SOURCE
-        array(), // DEPENDENCIES
-        CLPL_VERSION // VERSION
+        'custom-login-logo-style', 
+        CLPL_URL . 'css/clpl-style.css', 
+        array(), 
+        CLPL_VERSION 
     );
 
 }
@@ -44,6 +51,7 @@ function clpl_enqueue_scripts($hook){
     // WP color picker
     wp_enqueue_style('wp-color-picker');
     wp_enqueue_script('wp-color-picker');
+    wp_enqueue_script('clpl-color-picker-alpha');
 
     $clpl_translation_array = array(
         'choose_or_upload_logo' => esc_html__('Choose or Upload a Logo', 'custom-login-page-logo'),

@@ -1,5 +1,15 @@
 /***** CLPL CUSTOM STYLESHEET *****/
 
+.clpl-admin-wrapper {
+    position: relative;
+    overflow: visible;
+}
+.clpl-admin-wrapper .wp-picker-holder {
+    z-index: 100000;
+}
+.clpl-admin-wrapper .wp-picker-holder .ui-slider .ui-slider-handle {
+    top: auto !important;
+}
 #clpl_logo_container, #clpl_bg_img_container{
     height:auto; 
     width:auto;

@@ -30,11 +30,13 @@ function clpl_enqueue_styles() {
     $bg_img_size        = $options['background_img_size'];
     $bg_img_pos         = $options['background_img_position'];
     $bg_img_rep         = $options['background_img_repeat'];
-
+    $bg_overlay_color   = $options['background_overlay_color'];
+    
     echo '<style type = text/css>    
-            body.login {';
+        body.login {';
             
-            // BACKGROUND
+            // ========== BACKGROUND ========== //
+
             if ( ! empty( $bg_color ) ) {
                 echo 'background-color: ' . esc_attr( $bg_color ) . ';';
             } 
@@ -51,12 +53,32 @@ function clpl_enqueue_styles() {
                 echo 'background-repeat: '. esc_attr( $bg_img_rep ) . ';';
             }
             echo 'transition: background-color 0.3s ease;';
-            echo '}';
-            
-            // Logo styles
-            echo '#login h1 a {';
+        
+        echo '}';
 
-            // SETS LOGO IMAGE WITH STYLE
+        if ( ! empty( $bg_overlay_color ) ) {
+            echo'  
+            body.login {
+                position: relative;
+            }  
+            body.login::before{
+                content:"";
+                position:fixed;
+                inset:0;
+                background:'.esc_attr($bg_overlay_color).';
+                z-index:0;
+                pointer-events: none;
+            }
+            body.login #login, body.login .language-switcher{
+                position:relative;
+                z-index:1;
+            }';
+        }
+            
+        // ========== LOGO ========== // 
+
+        echo '#login h1 a {';
+
             if (!empty($logo_url)) {
                 echo'background-image: url(' . esc_url($logo_url) . ');
                     width: ' . esc_attr($logo_width) . esc_attr($logo_width_unit) . ';
@@ -66,12 +88,10 @@ function clpl_enqueue_styles() {
                     background-position: center;';
             }
             
-            // BORDER RADIUS
             if(!empty($logo_border_radius)){
                 echo'border-radius: '.esc_attr($logo_border_radius).'px;';
             }
 
-            // SETS LOGO SHADOW
             if(!empty($logo_shadow)){
                 if($logo_shadow == 1){
                     echo '
@@ -80,17 +100,18 @@ function clpl_enqueue_styles() {
                 }
             }
 
-            // SETS LOGO PADDING
             if(!empty($logo_padding)){
                 echo 'padding:'.esc_attr($logo_padding).'px;
                 background-origin: content-box;';
             }
-        echo'}';  
-                
+        
+        echo'}'; 
+        
     echo'</style>';
 }
 
     // ========= SETS LOGO REDIRECT URL ========= //
+
     if(!empty($logo_redirect_url)){
 
         function clpl_logo_redirect_url() {

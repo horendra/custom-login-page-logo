@@ -1,48 +1,117 @@
 === Custom Login Page Logo ===
 Contributors: Horendra
 Donate link: https://www.paypal.me/horendrasingh
-Tags: change WP admin logo, change login logo, custom login logo, wordpress logo, logo customization
+Tags: login page customizer, wordpress login logo, custom login page, white label login, login background
 Requires at least: 4.7
 Tested up to: 6.9
-Version: 1.4
-Stable tag: 1.4
 Requires PHP: 7.4
+Stable tag: 1.4.1
+Version: 1.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A simple, secure and very light weight plugin to change wordpress logo that you see on the login page (wp-admin) with rich features.
+Customize the WordPress login page with a custom logo, background, and styled form. Fast, lightweight branded login experience with no coding.
 
 == Description ==
 
-"Custom Login Page Logo" is a very light weight, handy, easy to use, simple layout plugin that lets you change wordpress logo that you see on login page. 
+Make your WordPress login page look professional, modern, and fully branded — without writing a single line of code.
 
-When you create your website, the wordpress uses it's own logo for login page (wp-admin) which looks very unprofessional but when you use this plugin then you can add your own logo of the company/agency which looks more professional and match with your brand.
+By default, WordPress displays its own logo and a simple background on the login screen. This plugin allows you to replace the default logo and customize the login background to match your brand identity.
 
-You can always change it whenever you want.
+Whether you are a freelancer, agency, business owner, or developer, you can create a clean and professional login experience in minutes.
 
 ==  Features  ==
 
-* Very light weight, handy, easy to use, simple layout.
-* Secure, Translation ready ( English and Hindi only ).
-* Can change wordpress default login page Logo.
-* Can add logo height and width with unit.
-* Can add link to the logo for redirect to anywhere on the web.
-* Can add shadow to the logo.
-* Can add logo padding.
-* Can add logo border radius.
-* Can add background color.
-* Can add background image.
-* Can change background image size.
-* Can change background image position.
-* Can change background image repeat.
-* Doesn't impact on your website speed.
+= Logo customization =
 
-==  Translation  ==
-This plugin is translation ready for English and Hindi language.
+* Replace the default WordPress logo
+* Set custom logo width and height
+* Add a custom logo URL
+* Add padding, shadow, and border radius
+* Easy media uploader support
+
+= Background Customization =
+
+* Set a custom background color
+* Upload a background image
+* Control background size (cover / contain)
+* Set background position
+* Configure background repeat
+* Add background overlay color
+* Adjust overlay opacity
+
+= Lightweight & Optimized =
+
+* No impact on front-end performance
+* Clean and simple settings interface
+* Beginner-friendly and easy to use
+* Translation ready
+
+== Coming soon features ==
+
+New features of “Login Form” tab are coming soon!
+
+This update will allow you to fully customize the login form design and create a more modern, branded experience.
+
+Have a feature request? Let us know through a review — your feedback helps shape future updates!
+
+== Why Use This Plugin? ==
+
+Your login page is often the first interaction users or clients have with your website. A branded login page:
+
+* Improves brand consistency
+* Looks more professional
+* Enhances user trust
+* Perfect for client and white-label projects
+
+Instead of showing the default WordPress branding, display your own identity.
+
+== Easy Setup ==
+
+* Install and activate the plugin.
+* Navigate to the plugin settings page.
+* Upload your custom logo.
+* Configure background settings.
+* Save changes and refresh your login page.
+
+Your branded login page is ready instantly.
+
+== Frequently Asked Questions ==
+
+= Will this slow down my website? =
+
+No. The plugin only loads scripts on the login page.
+
+= Can I use my own background image? =
+
+Yes. You can upload any custom image and control its size and position.
+
+= Does this work with any theme? =
+
+Yes. It works independently of your active theme.
+
+= Is coding knowledge required? =
+
+No. Everything is controlled via simple settings.
+
+= Is it compatible with the latest WordPress version? =
+
+Yes, it works with the latest version of WordPress.
+
+= Is this pugin translation ready? =
+YES, this plugin is translation ready for the following languages:-
+
+1. English (Default)
+2. Hindi
+
+= Do you offer support? =
+
+YES, For support or inquiries, please fill out the following [form](https://forms.gle/Y8HjwnVLBsuciXh97)
 
 == Installation ==
 
 = From WordPress.org =
+
 1. Download "custom login page logo" plugin.
 1. Upload the plugin folder to your /wp-content/plugins/ folder.
 1. Go to the **Plugins** page and activate the plugin.
@@ -54,44 +123,25 @@ This plugin is translation ready for English and Hindi language.
 1. In the search plugins type **custom login page logo horendra**
 1. When you find it, click on **Install** and **activate**
 
-== Frequently Asked Questions ==
-
-= How do I use this plugin? =
-
-1. Just install and activate the plugin. 
-1. After that you will get a admin menu "Login Logo", click there.
-1. Click on upload logo and a media uploader popup will appear.
-1. Select your logo and choose appropriate settings.
-1. Save changes
-
-That's it, next time when you login with wp-admin you will get a new logo
-
-= How to uninstall the plugin? =
-
-1. Go to Plugins admin menu. 
-1. Simply deactivate and delete the plugin.
-
-= Do you offer support? =
-
-YES, For support or inquiries, please fill out the following [form](https://forms.gle/Y8HjwnVLBsuciXh97)
-
-= Is this pugin translation ready? =
-YES, this plugin is translation ready for the following languages:-
-
-1. English (Default)
-2. Hindi
-
-If you want this plugin in your language then you can contact me via this contact [form](https://forms.gle/Y8HjwnVLBsuciXh97). 
-
 == Screenshots ==
 
-1. Initially screen of the plugin page when there is no logo is uploaded (screenshot-1.png)
+1. Initially screen of the Logo tab when there is no logo is uploaded (screenshot-1.png)
 2. Upload a logo with media uploader (screenshot-2.png)
 3. Image URL is displayed inside the input field (screenshot-3.png)
 4. Once saved, the logo will be displayed on the plugin page (screenshot-4.png)
-5. Once saved, the logo will be displayed on the wp-admin page too (screenshot-5.png)
+5. Once saved, the logo will be displayed on the wp-admin page (login page) too (screenshot-5.png)
+6. Initially screen of the background tab (screenshot-6.png)
+7. Login page when background color is selected (screenshot-7.png)
+8. Login page when background image is selected (screenshot-8.png)
 
 == Changelog ==
+
+= 1.4.1 =
+* Background Tab is added
+* Background color is added
+* Background image is added
+* Background image - position, repeat, size is added
+* Background overlay is added
 
 = 1.4 =
 * Code is improved

@@ -11,7 +11,7 @@
             : 'logo';
             ?>
         
-        <div class="wrap">
+        <div class="wrap clpl-admin-wrapper">
             <h1>
                 <?php esc_html_e('Custom Login Page Logo Settings', 'custom-login-page-logo');?>
             </h1>
@@ -22,7 +22,7 @@
                             );
                         ?>"
                    class="nav-tab <?php echo ($active_tab == 'logo') ? 'nav-tab-active' : ''; ?> ">
-                   Logo Settings
+                   Logo
                 </a>
                 <a href="<?php 
                             echo esc_url(
@@ -31,6 +31,14 @@
                         ?>"
                    class="nav-tab <?php echo ($active_tab == 'background') ? 'nav-tab-active' : ''; ?>">
                    Background
+                </a>
+                <a href="<?php 
+                            echo esc_url(
+                                admin_url('admin.php?page=clpl-logo-settings&tab=form')
+                            );
+                        ?>"
+                   class="nav-tab <?php echo ($active_tab == 'form') ? 'nav-tab-active' : ''; ?>">
+                   Login Form
                 </a>
                 <a href="<?php 
                             echo esc_url(
@@ -47,6 +55,9 @@
                     switch($active_tab) {
                         case 'background':
                             do_settings_sections('clpl_background_tab');
+                            break;
+                        case 'form':
+                            do_settings_sections('clpl_form_tab');
                             break;
                         case 'advanced':
                             do_settings_sections('clpl_advanced_tab');
@@ -90,7 +101,6 @@
         echo '<p class="description clpl_description">('.esc_html__('Enter logo width', 'custom-login-page-logo').')</p>';
     }
 
-
     // ========== DISPLAYS - LOGO WIDTH MEASUREMENT UNIT ========== //
     function clpl_logo_width_unit_callback() {
         
@@ -102,7 +112,6 @@
         echo '<p class="description clpl_description">('.esc_html__('Choose the measurement unit for logo width', 'custom-login-page-logo').')</p>';
     }
 
-
     // ========== DISPLAYS - LOGO HEIGHT ========== //
     function clpl_logo_height_callback() {
 
@@ -111,7 +120,6 @@
               placeholder="100" title = "Enter logo height" value="' . esc_attr($height) . '" />';
         echo '<p class="description clpl_description">('.esc_html__('Enter logo height', 'custom-login-page-logo').')</p>';
     }
-
 
     // ========== DISPLAYS LOGO HEIGHT MEASUREMENT UNIT ========== //
     function clpl_logo_height_unit_callback() {
@@ -123,7 +131,6 @@
               </select>';
         echo '<p class="description clpl_description">('.esc_html__('Choose the measurement unit for logo height', 'custom-login-page-logo').')</p>';
     }
-
 
     // ========== DISPLAYS LOGO REDIRECT URL ========== //
     function clpl_logo_redirect_url_callback() {
@@ -142,6 +149,7 @@
     function clpl_logo_shadow_callback() {
 
         $logo_shadow = esc_attr(clpl_get_option('logo_shadow'));
+        echo'<input type="hidden" name="clpl_settings[logo_shadow]" value="0" />';
         echo '<input type="checkbox" name="clpl_settings[logo_shadow]" id="clpl_logo_shadow" title="show shadow" 
               value="1" ' . checked($logo_shadow, '1', false) . ' />';
         echo '<label for="clpl_logo_shadow">'.esc_html__('Yes', 'custom-login-page-logo').'</label>';
@@ -171,8 +179,8 @@
 
         $background_color = clpl_get_option('background_color');
         echo '<input type="text" name="clpl_settings[background_color]" id="clpl_background_color" 
-        title="Select background color" data-alpha-enabled="true"
-        value="' . esc_attr($background_color) . '" data-default-color="rgba(255,255,255,1)" />';
+        class="clpl-color-field" title="Select background color" 
+        value="' . esc_attr($background_color) . '" data-default-color="#FFFFFF" />';
         echo '<p class="description clpl_description">('.esc_html__('Select background color', 'custom-login-page-logo').')</p>';
     }
 
@@ -239,8 +247,7 @@
             </option>
         </select>
         <p class="description clpl_description">
-            (<?php esc_html_e('Select background image position', 'custom-login-page-logo');?>)
-        </p>
+            (<?php esc_html_e('Select background image position', 'custom-login-page-logo');?>)</p>
             <?php
     }
 
@@ -266,6 +273,22 @@
         <p class="description clpl_description">
             (<?php esc_html_e('Select background image repeat', 'custom-login-page-logo');?>)</p>
             <?php
+    }
+
+    // ========== DISPLAYS BACKGROUND OVERLAY COLOR ========== //
+    function clpl_background_overlay_color_callback(){
+
+        $background_overlay_color = clpl_get_option('background_overlay_color');
+        echo '<input type="text" name="clpl_settings[background_overlay_color]" id="clpl_background_overlay_color" class="clpl-color-field" data-alpha-enabled="true"
+        title="Select background overlay color" 
+        value="' . esc_attr($background_overlay_color) . '" data-default-color="rgba(0,0,0,0)" />';
+        echo '<p class="description clpl_description">('.esc_html__('Select background overlay color', 'custom-login-page-logo').')</p>';
+    }
+
+    
+    // ========== DISPLAYS ADVANCED ========== //
+    function clpl_advanced_callback(){
+
     }
    
     // DEFAULT VALUES OF THE OPTIONS OF THE PLUGIN
@@ -305,11 +328,6 @@
 
     register_activation_hook(__FILE__, 'clpl_plugin_activation');
 
-    // ========== CALLBACK FUNCTION OF SETTING'S SECTION ========== //
-    function clpl_logo_section_callback() {
-        echo '<p>'.esc_html__('(Upload or select a custom logo for the login page.)', 'custom-login-page-logo').'</p>';
-    }
-
     // ========== ADDING SETTINGS ========== //
     function clpl_logo_settings_init() {
 
@@ -317,17 +335,21 @@
         add_settings_section(
             'clpl_logo_section',
             __('Logo Settings', 'custom-login-page-logo'),
-            'clpl_logo_section_callback',
+            '__return_false',
             'clpl_logo_tab'
         );
-
         add_settings_section(
             'clpl_background_section',
             __('Background Settings', 'custom-login-page-logo'),
             '__return_false',
             'clpl_background_tab'
         );
-
+        add_settings_section(
+            'clpl_form_section',
+            __('Form Settings', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_form_tab'
+        );
         add_settings_section(
             'clpl_advanced_section',
             __('Advanced Settings', 'custom-login-page-logo'),
@@ -336,6 +358,7 @@
         );
 
         // ADDING SETTING'S FIELDS //
+
         add_settings_field(
             'clpl_logo_field',
             __('Logo URL', 'custom-login-page-logo'), // CUSTOM LOGO URL
@@ -343,7 +366,6 @@
             'clpl_logo_tab',
             'clpl_logo_section'
         );
-
         add_settings_field(
             'clpl_logo_width',
             __('Logo Width', 'custom-login-page-logo'), // CUSTOM LOGO WIDTH
@@ -351,7 +373,6 @@
             'clpl_logo_tab',
             'clpl_logo_section'
         );
-
         add_settings_field(
             'clpl_logo_width_unit',
              __('Logo Width Unit', 'custom-login-page-logo'), // CUSTOM LOGO WIDTH MEASUREMENT UNIT
@@ -359,7 +380,6 @@
             'clpl_logo_tab',
             'clpl_logo_section'
         );
-
         add_settings_field(
             'clpl_logo_height',
             __('Logo Height', 'custom-login-page-logo'), // CUSTOM LOGO HEIGHT
@@ -374,7 +394,6 @@
             'clpl_logo_tab',
             'clpl_logo_section'
         );
-
         add_settings_field(
             'clpl_logo_redirect_url',
              __('Logo Redirect URL', 'custom-login-page-logo'), // CUSTOM LOGO REDIRECT URL
@@ -382,7 +401,6 @@
             'clpl_logo_tab',
             'clpl_logo_section'
         );
-
         add_settings_field(
             'clpl_logo_shadow',
              __('Logo Shadow', 'custom-login-page-logo'), // CUSTOM LOGO SHADOW
@@ -390,7 +408,6 @@
             'clpl_logo_tab',
             'clpl_logo_section'
         );
-
         add_settings_field(
             'clpl_logo_border_radius',
              __('Logo Border Radius', 'custom-login-page-logo'), // CUSTOM LOGO BORDER-RADIUS
@@ -407,7 +424,7 @@
         );
         add_settings_field(
             'clpl_background_color',
-             __('Background Color', 'custom-login-page-logo'), // CUSTOM LOGO PADDING
+             __('Background Color', 'custom-login-page-logo'), // BACKGROUND COLOR
             'clpl_background_color_callback',
             'clpl_background_tab',
             'clpl_background_section'
@@ -440,7 +457,24 @@
             'clpl_background_tab',
             'clpl_background_section'
         );
-        
+        add_settings_field(
+            'clpl_background_overlay_color',
+             __('Background Overlay Color', 'custom-login-page-logo'), // BACKGROUND OVERLAY COLOR
+            'clpl_background_overlay_color_callback',
+            'clpl_background_tab',
+            'clpl_background_section'
+        );
+
+        // ========== ADVANCED SETTINGS FIELDS ========== //
+
+        add_settings_field(
+            'clpl_advanced',
+             __('Coming soon...', 'custom-login-page-logo'), // ADVANCE
+            'clpl_advanced_callback',
+            'clpl_advanced_tab',
+            'clpl_advanced_section'
+        );
+
         // ========== REGISTER SETTINGS ========== //
         register_setting(
             'clpl_settings_group',
@@ -460,7 +494,7 @@
             $input = wp_parse_args($input, $existing);
 
             $allowed_units          = array('px', '%');
-            $allowed_bg_img_size    = array('cover', 'contain', 'auto');
+            $allowed_bg_img_size    = array('cover', 'contain', 'auto'); 
             $allowed_bg_img_pos     = array(
                 'center center',
                 'top center',
@@ -473,46 +507,60 @@
                 'repeat',
                 'repeat-x',
                 'repeat-y'
-            );
+            ); 
 
             $sanitized = array();
 
-            // Logo
-            $sanitized['logo_field']          = esc_url_raw($input['logo_field']);
-            $sanitized['logo_width']          = intval($input['logo_width']);
+            // ========== LOGO ========== //
+
+            $sanitized['logo_field']        = esc_url_raw($input['logo_field']);
+            $sanitized['logo_width']        = intval($input['logo_width']);
+            $sanitized['logo_height']       = intval($input['logo_height']);
+
             $sanitized['logo_width_unit']   = in_array(
                 $input['logo_width_unit'],
                 $allowed_units,
                 true
             )
             ? $input['logo_width_unit'] : $defaults['logo_width_unit'];
-            $sanitized['logo_height']         = intval($input['logo_height']);
+            
             $sanitized['logo_height_unit']  = in_array(
                 $input['logo_height_unit'],
                 $allowed_units,
                 true
             )
             ? $input['logo_height_unit'] : $defaults['logo_height_unit'];
-            $sanitized['logo_redirect_url']   = esc_url_raw($input['logo_redirect_url']);
-            $sanitized['logo_shadow']         = sanitize_text_field($input['logo_shadow']);
-            $sanitized['logo_border_radius']  = intval($input['logo_border_radius']);
-            $sanitized['logo_padding']        = intval($input['logo_padding']);
+            
+            $sanitized['logo_redirect_url'] = esc_url_raw($input['logo_redirect_url']);
+            $sanitized['logo_shadow']       = ( isset($input['logo_shadow']) && $input['logo_shadow'] == 1 ) ? 1 : 0;
+            $sanitized['logo_border_radius']= intval($input['logo_border_radius']);
+            $sanitized['logo_padding']      = intval($input['logo_padding']);
 
-            // Background
-            $sanitized['background_color']    = sanitize_hex_color($input['background_color']) ?: '#FFFFFF';
+            // ========== BACKGROUND ========== //
+            
+            $sanitized['background_color']  = sanitize_hex_color($input['background_color'])
+            ?: $defaults['background_color'];
+
+            $sanitized['background_overlay_color']  = sanitize_text_field(
+                $input['background_overlay_color']
+            ) ?: $defaults['background_overlay_color'];
+
             $sanitized['background_img']    = esc_url_raw($input['background_img']);
+
             $sanitized['background_img_size']= in_array(
                 $input['background_img_size'], 
                 $allowed_bg_img_size,
                 true
             )
             ? $input['background_img_size'] : $defaults['background_img_size'];
+
             $sanitized['background_img_position']= in_array(
                 $input['background_img_position'],
                 $allowed_bg_img_pos,
                 true
             )
             ? $input['background_img_position'] : $defaults['background_img_position'];
+
             $sanitized['background_img_repeat']= in_array(
                 $input['background_img_repeat'],
                 $allowed_bg_img_repeat,
@@ -520,10 +568,11 @@
             )
             ? $input['background_img_repeat'] : $defaults['background_img_repeat'];
 
-            // Review system
-            $sanitized['activation_time']     = intval($input['activation_time']);
-            $sanitized['review_done']         = intval($input['review_done']);
-            $sanitized['review_remind_time']  = intval($input['review_remind_time']);
+            // ========== REVIEW SYSTEM ========== //
+
+            $sanitized['activation_time']   = intval($input['activation_time']);
+            $sanitized['review_done']       = intval($input['review_done']);
+            $sanitized['review_remind_time']= intval($input['review_remind_time']);
 
             return $sanitized;
         }
