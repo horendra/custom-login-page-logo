@@ -5,12 +5,12 @@ Tags: login page customizer, wordpress login logo, custom login page, white labe
 Requires at least: 4.7
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.4.1
-Version: 1.4.1
+Stable tag: 1.4.2
+Version: 1.4.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Customize the WordPress login page with a custom logo, background, and styled form. Fast, lightweight branded login experience with no coding.
+Customize your WordPress login page with a custom logo, login form and background to create a fully branded experience — fast, lightweight, and no coding required.
 
 == Description ==
 
@@ -22,7 +22,7 @@ Whether you are a freelancer, agency, business owner, or developer, you can crea
 
 ==  Features  ==
 
-= Logo customization =
+= Logo Customization =
 
 * Replace the default WordPress logo
 * Set custom logo width and height
@@ -32,13 +32,20 @@ Whether you are a freelancer, agency, business owner, or developer, you can crea
 
 = Background Customization =
 
-* Set a custom background color
-* Upload a background image
-* Control background size (cover / contain)
+* Set a custom background color/image
+* Control background image size (cover / contain)
 * Set background position
 * Configure background repeat
-* Add background overlay color
-* Adjust overlay opacity
+* Add background overlay color and opacity
+
+= Login Form Customization =
+
+* Login form background and label color
+* Input field background, border and text color
+* Password eye icon color
+* Login button background, text and border color
+* Set "Password reset" and "Go to site" color
+* Set "Remember" checkbox and checkmark color
 
 = Lightweight & Optimized =
 
@@ -49,9 +56,17 @@ Whether you are a freelancer, agency, business owner, or developer, you can crea
 
 == Coming soon features ==
 
-New features of “Login Form” tab are coming soon!
+A new tab "Language Switcher" is coming soon with the following features:
 
-This update will allow you to fully customize the login form design and create a more modern, branded experience.
+* Background color and border color of Language switcher
+* Text color of Languagr Switcher, Drop down arrow and button
+* Border color of Language Switcher and Button
+* Background Color, Text color and Border of Language Switcher on Hover 
+* Background color, Text color and Border color of Button on Hover
+* Background color, Text color and Border color of Language Switcher on Hover
+
+This update will give you to seamless experience to access all the language switcher features in more organized way
+so that you can design and create a more modern, branded look of your brand.
 
 Have a feature request? Let us know through a review — your feedback helps shape future updates!
 
@@ -125,16 +140,21 @@ YES, For support or inquiries, please fill out the following [form](https://form
 
 == Screenshots ==
 
-1. Initially screen of the Logo tab when there is no logo is uploaded (screenshot-1.png)
-2. Upload a logo with media uploader (screenshot-2.png)
-3. Image URL is displayed inside the input field (screenshot-3.png)
-4. Once saved, the logo will be displayed on the plugin page (screenshot-4.png)
-5. Once saved, the logo will be displayed on the wp-admin page (login page) too (screenshot-5.png)
-6. Initially screen of the background tab (screenshot-6.png)
-7. Login page when background color is selected (screenshot-7.png)
-8. Login page when background image is selected (screenshot-8.png)
+1. Logo Tab (screenshot-1.png)
+2. Background Tab (screenshot-2.png)
+3. Login form tab (screenshot-3.png)
+4. Login screen with custom login page logo (screenshot-4.png)
 
 == Changelog ==
+
+= 1.4.2 =
+* Login form tab is added
+* Login form background and label color are added
+* Login form Input field- background, border and text color are added
+* Login form button- background, border and text color are added
+* Login form password eye color is added
+* Login form checkmark and checkbox color are added.
+* Login form password reset color and go to site color are added
 
 = 1.4.1 =
 * Background Tab is added

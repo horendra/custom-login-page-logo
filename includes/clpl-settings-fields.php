@@ -285,7 +285,126 @@
         echo '<p class="description clpl_description">('.esc_html__('Select background overlay color', 'custom-login-page-logo').')</p>';
     }
 
-    
+    // ========== DISPLAYS FORM BACKGROUND COLOR ========== //
+    function clpl_form_background_color_callback(){
+
+        $form_bg_color = clpl_get_option('form_bg_color');
+        echo '<input type="text" name="clpl_settings[form_bg_color]" id="clpl_form_bg_color" 
+        class="clpl-color-field" title="Select form background color" 
+        value="' . esc_attr($form_bg_color) . '" data-default-color="#FFFFFF" />';
+        echo '<p class="description clpl_description">('.esc_html__('Select form background color', 'custom-login-page-logo').')</p>';
+    }
+
+    // ========== DISPLAYS FORM BUTTON BACKGROUND COLOR ========== //
+    function clpl_form_btn_bg_color_callback(){
+
+        $form_btn_bg_color = clpl_get_option('form_btn_bg_color');
+        echo '<input type="text" name="clpl_settings[form_btn_bg_color]" id="clpl_form_btn_bg_color" 
+        class="clpl-color-field" title="Select form button background color" 
+        value="' . esc_attr($form_btn_bg_color) . '" data-default-color="#2271b1" />';
+        echo '<p class="description clpl_description">('.esc_html__('Select form button background color', 'custom-login-page-logo').')</p>';
+    }
+
+    // ========== DISPLAYS FORM BUTON TEXT COLOR ========== //
+    function clpl_form_btn_txt_color_callback(){
+
+        $form_btn_txt_color = clpl_get_option('form_btn_txt_color');
+        echo '<input type="text" name="clpl_settings[form_btn_txt_color]" id="clpl_form_btn_txt_color" 
+        class="clpl-color-field" title="Select form button text color" 
+        value="' . esc_attr($form_btn_txt_color) . '" data-default-color="#FFFFFF" />';
+        echo '<p class="description clpl_description">('.esc_html__('Select form button text color', 'custom-login-page-logo').')</p>';
+    }
+
+    // ========== DISPLAYS FORM BUTON BORDER COLOR ========== //
+    function clpl_form_btn_border_color_callback(){
+
+        $form_btn_border_color = clpl_get_option('form_btn_border_color');
+        echo '<input type="text" name="clpl_settings[form_btn_border_color]" id="clpl_form_btn_border_color" 
+        class="clpl-color-field" title="Select form button border color" 
+        value="' . esc_attr($form_btn_border_color) . '" data-default-color="#2271b1" />';
+        echo '<p class="description clpl_description">('.esc_html__('Select form button border color', 'custom-login-page-logo').')</p>';
+    }
+
+    // ========== DISPLAYS FORM EYE ICON COLOR ========== //
+    function clpl_form_eye_icon_color_callback(){
+
+        $form_eye_icon_color = clpl_get_option('form_eye_icon_color');
+        echo '<input type="text" name="clpl_settings[form_eye_icon_color]" id="clpl_form_eye_icon_color" 
+        class="clpl-color-field" title="Select form eye icon color" 
+        value="' . esc_attr($form_eye_icon_color) . '" data-default-color="#2271b1" />';
+        echo '<p class="description clpl_description">('.esc_html__('Select form eye icon color', 'custom-login-page-logo').')</p>';
+    }
+
+    // ========== DISPLAYS FORM LABEL COLOR ========== //
+    function clpl_form_label_color_callback(){
+
+        $form_label_color = clpl_get_option('form_label_color');
+        echo '<input type="text" name="clpl_settings[form_label_color]" id="clpl_form_label_color" 
+        class="clpl-color-field" title="Select form label color" 
+        value="' . esc_attr($form_label_color) . '" data-default-color="#3c434a" />';
+        echo '<p class="description clpl_description">('.esc_html__('Select form label color', 'custom-login-page-logo').')</p>';
+    }
+
+    // ========== DISPLAYS FORM TEXTFIELD BORDER COLOR ========== //
+    function clpl_form_txtfield_bg_color_callback(){
+
+        $form_txtfield_bg_color = clpl_get_option('form_txtfield_bg_color');
+        echo '<input type="text" name="clpl_settings[form_txtfield_bg_color]" id="clpl_form_txtfield_bg_color" 
+        class="clpl-color-field" title="Select form text field background color" 
+        value="' . esc_attr($form_txtfield_bg_color) . '" data-default-color="#FFFFFF" />';
+        echo '<p class="description clpl_description">('.esc_html__('Select form Input field background color', 'custom-login-page-logo').')</p>';
+    }
+
+    // ========== DISPLAYS FORM TEXTFIELD BORDER COLOR ========== //
+    function clpl_form_txtfield_txt_color_callback(){
+
+        $form_txtfield_txt_color = clpl_get_option('form_txtfield_txt_color');
+        echo '<input type="text" name="clpl_settings[form_txtfield_txt_color]" id="clpl_form_txtfield_txt_color" 
+        class="clpl-color-field" title="Select form text field text color" 
+        value="' . esc_attr($form_txtfield_txt_color) . '" data-default-color="#2c3338" />';
+        echo '<p class="description clpl_description">('.esc_html__('Select form Input field text color', 'custom-login-page-logo').')</p>';
+    }
+
+    // ========== DISPLAYS FORM TEXTFIELD BORDER COLOR ========== //
+    function clpl_form_txtfield_border_color_callback(){
+
+        $form_txtfield_border_color = clpl_get_option('form_txtfield_border_color');
+        echo '<input type="text" name="clpl_settings[form_txtfield_border_color]" id="clpl_form_txtfield_border_color" 
+        class="clpl-color-field" title="Select form textfield border color" 
+        value="' . esc_attr($form_txtfield_border_color) . '" data-default-color="#2271b1" />';
+        echo '<p class="description clpl_description">('.esc_html__('Select form textfield border color', 'custom-login-page-logo').')</p>';
+    }
+
+    // ========== DISPLAYS FORM REMEMBER ME (CHECK MARK) COLOR ========== //
+    function clpl_form_remember_checkmark_color_callback(){
+
+        $form_remember_checkmark_color = clpl_get_option('form_remember_checkmark_color');
+        echo '<input type="text" name="clpl_settings[form_remember_checkmark_color]" id="clpl_form_remember_checkmark_color" 
+        class="clpl-color-field" title="Select form checkmark color" 
+        value="' . esc_attr($form_remember_checkmark_color) . '" data-default-color="#2271b1" />';
+        echo '<p class="description clpl_description">('.esc_html__('Select form remember checkmark color', 'custom-login-page-logo').')</p>';
+    }
+
+    // ========== DISPLAYS FORM PASSWORD RESET COLOR ========== //
+    function clpl_form_pwd_reset_color_callback(){
+
+        $form_pwd_reset_color = clpl_get_option('form_pwd_reset_color');
+        echo '<input type="text" name="clpl_settings[form_pwd_reset_color]" id="clpl_form_pwd_reset_color" 
+        class="clpl-color-field" title="Select form password reset color" 
+        value="' . esc_attr($form_pwd_reset_color) . '" data-default-color="#50575e" />';
+        echo '<p class="description clpl_description">('.esc_html__('Select form password reset color', 'custom-login-page-logo').')</p>';
+    }
+
+    // ========== DISPLAYS FORM GO TO SITE COLOR ========== //
+    function clpl_form_go_to_site_color_callback(){
+
+        $form_go_to_site_color = clpl_get_option('form_go_to_site_color');
+        echo '<input type="text" name="clpl_settings[form_go_to_site_color]" id="clpl_form_go_to_site_color" 
+        class="clpl-color-field" title="Select form go to site color" 
+        value="' . esc_attr($form_go_to_site_color) . '" data-default-color="#50575e" />';
+        echo '<p class="description clpl_description">('.esc_html__('Select form go to site color', 'custom-login-page-logo').')</p>';
+    }
+
     // ========== DISPLAYS ADVANCED ========== //
     function clpl_advanced_callback(){
 
@@ -338,18 +457,28 @@
             '__return_false',
             'clpl_logo_tab'
         );
+
         add_settings_section(
             'clpl_background_section',
             __('Background Settings', 'custom-login-page-logo'),
             '__return_false',
             'clpl_background_tab'
         );
+
         add_settings_section(
             'clpl_form_section',
             __('Form Settings', 'custom-login-page-logo'),
             '__return_false',
             'clpl_form_tab'
         );
+
+        add_settings_section(
+            'clpl_language_section',
+            __('Language Settings', 'custom-login-page-logo'),
+            '__return_false',
+            'clpl_language_tab'
+        );
+
         add_settings_section(
             'clpl_advanced_section',
             __('Advanced Settings', 'custom-login-page-logo'),
@@ -357,7 +486,7 @@
             'clpl_advanced_tab'
         );
 
-        // ADDING SETTING'S FIELDS //
+        // ========== LOGO SETTINGS FIELDS ========== //
 
         add_settings_field(
             'clpl_logo_field',
@@ -366,6 +495,7 @@
             'clpl_logo_tab',
             'clpl_logo_section'
         );
+
         add_settings_field(
             'clpl_logo_width',
             __('Logo Width', 'custom-login-page-logo'), // CUSTOM LOGO WIDTH
@@ -373,6 +503,7 @@
             'clpl_logo_tab',
             'clpl_logo_section'
         );
+
         add_settings_field(
             'clpl_logo_width_unit',
              __('Logo Width Unit', 'custom-login-page-logo'), // CUSTOM LOGO WIDTH MEASUREMENT UNIT
@@ -380,6 +511,7 @@
             'clpl_logo_tab',
             'clpl_logo_section'
         );
+
         add_settings_field(
             'clpl_logo_height',
             __('Logo Height', 'custom-login-page-logo'), // CUSTOM LOGO HEIGHT
@@ -394,6 +526,7 @@
             'clpl_logo_tab',
             'clpl_logo_section'
         );
+
         add_settings_field(
             'clpl_logo_redirect_url',
              __('Logo Redirect URL', 'custom-login-page-logo'), // CUSTOM LOGO REDIRECT URL
@@ -401,6 +534,7 @@
             'clpl_logo_tab',
             'clpl_logo_section'
         );
+
         add_settings_field(
             'clpl_logo_shadow',
              __('Logo Shadow', 'custom-login-page-logo'), // CUSTOM LOGO SHADOW
@@ -408,6 +542,7 @@
             'clpl_logo_tab',
             'clpl_logo_section'
         );
+
         add_settings_field(
             'clpl_logo_border_radius',
              __('Logo Border Radius', 'custom-login-page-logo'), // CUSTOM LOGO BORDER-RADIUS
@@ -422,6 +557,9 @@
             'clpl_logo_tab',
             'clpl_logo_section'
         );
+
+        // ========== BACKGROUND SETTINGS FIELDS ========== //
+
         add_settings_field(
             'clpl_background_color',
              __('Background Color', 'custom-login-page-logo'), // BACKGROUND COLOR
@@ -465,8 +603,94 @@
             'clpl_background_section'
         );
 
-        // ========== ADVANCED SETTINGS FIELDS ========== //
+        // ========== FORM SETTINGS FIELDS ========== //
+        
+        add_settings_field(
+            'clpl_form_background',
+             __('Form Background Color', 'custom-login-page-logo'), // FORM BACKGROUND
+            'clpl_form_background_color_callback',
+            'clpl_form_tab',
+            'clpl_form_section'
+        );
+        add_settings_field(
+            'clpl_form_eye_icon_color',
+             __('Form Eye Icon Color', 'custom-login-page-logo'), // FORM EYE ICON COLOR
+            'clpl_form_eye_icon_color_callback',
+            'clpl_form_tab',
+            'clpl_form_section'
+        );
+        add_settings_field(
+            'clpl_form_label_color',
+             __('Form Label Color', 'custom-login-page-logo'), // FORM LABEL COLOR
+            'clpl_form_label_color_callback',
+            'clpl_form_tab',
+            'clpl_form_section'
+        );
+        add_settings_field(
+            'clpl_form_btn_background',
+             __('Form Button Color', 'custom-login-page-logo'), // FORM BUTTON BACKGROUND
+            'clpl_form_btn_bg_color_callback',
+            'clpl_form_tab',
+            'clpl_form_section'
+        );
+        add_settings_field(
+            'clpl_form_btn_txt_color',
+             __('Form Button Text Color', 'custom-login-page-logo'), // FORM BUTTON TEXT COLOR
+            'clpl_form_btn_txt_color_callback',
+            'clpl_form_tab',
+            'clpl_form_section'
+        );
+        add_settings_field(
+            'clpl_form_btn_border_color',
+             __('Form Button Border Color', 'custom-login-page-logo'), // FORM BUTTON TEXT COLOR
+            'clpl_form_btn_border_color_callback',
+            'clpl_form_tab',
+            'clpl_form_section'
+        );
+        add_settings_field(
+            'clpl_form_txtfield_border_color',
+             __('Form Input field Border Color', 'custom-login-page-logo'), // FORM TEXTFIELD BORDER COLOR
+            'clpl_form_txtfield_border_color_callback',
+            'clpl_form_tab',
+            'clpl_form_section'
+        );
+        add_settings_field(
+            'clpl_form_txtfield_bg_color',
+             __('Form Input field Background Color', 'custom-login-page-logo'), // FORM TEXTFIELD BORDER COLOR
+            'clpl_form_txtfield_bg_color_callback',
+            'clpl_form_tab',
+            'clpl_form_section'
+        );
+        add_settings_field(
+            'clpl_form_txtfield_txt_color',
+             __('Form Input field Text Color', 'custom-login-page-logo'), // FORM TEXTFIELD BORDER COLOR
+            'clpl_form_txtfield_txt_color_callback',
+            'clpl_form_tab',
+            'clpl_form_section'
+        );
+        add_settings_field(
+            'clpl_form_remember_checkmark_color',
+             __('Form Remember Checkmark Color', 'custom-login-page-logo'), // FORM REMEMBER CHECKMARK COLOR
+            'clpl_form_remember_checkmark_color_callback',
+            'clpl_form_tab',
+            'clpl_form_section'
+        );
+        add_settings_field(
+            'clpl_form_pwd_reset_color',
+             __('Form Password Reset Color', 'custom-login-page-logo'), // FORM PASSWORD RESET COLOR
+            'clpl_form_pwd_reset_color_callback',
+            'clpl_form_tab',
+            'clpl_form_section'
+        );
+        add_settings_field(
+            'clpl_form_go_to_site_color',
+             __('Form Go to Site Color', 'custom-login-page-logo'), // FORM GO TO SITE COLOR
+            'clpl_form_go_to_site_color_callback',
+            'clpl_form_tab',
+            'clpl_form_section'
+        );
 
+        // ========== ADVANCED SETTINGS FIELDS ========== //
         add_settings_field(
             'clpl_advanced',
              __('Coming soon...', 'custom-login-page-logo'), // ADVANCE
@@ -538,35 +762,85 @@
 
             // ========== BACKGROUND ========== //
             
-            $sanitized['background_color']  = sanitize_hex_color($input['background_color'])
-            ?: $defaults['background_color'];
+            $sanitized['background_color']          = sanitize_hex_color(
+                $input['background_color']
+            ) ?: $defaults['background_color'];
 
             $sanitized['background_overlay_color']  = sanitize_text_field(
                 $input['background_overlay_color']
             ) ?: $defaults['background_overlay_color'];
 
-            $sanitized['background_img']    = esc_url_raw($input['background_img']);
+            $sanitized['background_img']            = esc_url_raw(
+                $input['background_img']
+            );
 
-            $sanitized['background_img_size']= in_array(
+            $sanitized['background_img_size']       = in_array(
                 $input['background_img_size'], 
                 $allowed_bg_img_size,
                 true
-            )
-            ? $input['background_img_size'] : $defaults['background_img_size'];
+            ) ? $input['background_img_size'] : $defaults['background_img_size'];
 
-            $sanitized['background_img_position']= in_array(
+            $sanitized['background_img_position']   = in_array(
                 $input['background_img_position'],
                 $allowed_bg_img_pos,
                 true
-            )
-            ? $input['background_img_position'] : $defaults['background_img_position'];
+            ) ? $input['background_img_position'] : $defaults['background_img_position'];
 
-            $sanitized['background_img_repeat']= in_array(
+            $sanitized['background_img_repeat']     = in_array(
                 $input['background_img_repeat'],
                 $allowed_bg_img_repeat,
                 true
-            )
-            ? $input['background_img_repeat'] : $defaults['background_img_repeat'];
+            ) ? $input['background_img_repeat'] : $defaults['background_img_repeat'];
+
+            // ========== FORM ========== //
+            
+            $sanitized['form_bg_color']         = sanitize_hex_color(
+                $input['form_bg_color']
+            ) ?: $defaults['form_bg_color'];
+            
+            $sanitized['form_eye_icon_color']   = sanitize_hex_color(
+                $input['form_eye_icon_color']
+            ) ?: $defaults['form_eye_icon_color'];
+
+            $sanitized['form_label_color']   = sanitize_hex_color(
+                $input['form_label_color']
+            ) ?: $defaults['form_label_color'];
+
+            $sanitized['form_btn_bg_color']     = sanitize_hex_color(
+                $input['form_btn_bg_color']
+            ) ?: $defaults['form_btn_bg_color'];
+
+            $sanitized['form_btn_txt_color']   = sanitize_hex_color(
+                $input['form_btn_txt_color']
+            ) ?: $defaults['form_btn_txt_color'];
+
+            $sanitized['form_btn_border_color']   = sanitize_hex_color(
+                $input['form_btn_border_color']
+            ) ?: $defaults['form_btn_border_color'];
+
+            $sanitized['form_txtfield_border_color']   = sanitize_hex_color(
+                $input['form_txtfield_border_color']
+            ) ?: $defaults['form_txtfield_border_color'];
+
+            $sanitized['form_txtfield_bg_color']   = sanitize_hex_color(
+                $input['form_txtfield_bg_color']
+            ) ?: $defaults['form_txtfield_bg_color'];
+
+            $sanitized['form_txtfield_txt_color']   = sanitize_hex_color(
+                $input['form_txtfield_txt_color']
+            ) ?: $defaults['form_txtfield_txt_color'];
+
+            $sanitized['form_remember_checkmark_color']   = sanitize_hex_color(
+                $input['form_remember_checkmark_color']
+            ) ?: $defaults['form_remember_checkmark_color'];
+
+            $sanitized['form_pwd_reset_color']   = sanitize_hex_color(
+                $input['form_pwd_reset_color']
+            ) ?: $defaults['form_pwd_reset_color'];
+
+            $sanitized['form_go_to_site_color']   = sanitize_hex_color(
+                $input['form_go_to_site_color']
+            ) ?: $defaults['form_go_to_site_color'];
 
             // ========== REVIEW SYSTEM ========== //
 

@@ -2,7 +2,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 function clpl_default_options_with_values_new() {
-    
     return array(
 
         // ========== LOGO ========== //
@@ -25,6 +24,21 @@ function clpl_default_options_with_values_new() {
         'background_img_position'   => 'center center',
         'background_img_repeat'     => 'no-repeat', 
         'background_overlay_color'  => 'rgba(0,0,0,0)', 
+
+        // ========== FORM ========== //
+
+        'form_bg_color'                     => '#FFFFFF',
+        'form_label_color'                  => '#3c434a', 
+        'form_txtfield_border_color'        => '#2271b1',
+        'form_txtfield_bg_color'            => '#FFFFFF',
+        'form_txtfield_txt_color'           => '#2c3338',
+        'form_eye_icon_color'               => '#2271b1',
+        'form_btn_bg_color'                 => '#2271b1',
+        'form_btn_txt_color'                => '#FFFFFF',
+        'form_btn_border_color'             => '#2271b1',
+        'form_remember_checkmark_color'     => '#2271b1',
+        'form_pwd_reset_color'              => '#50575e',
+        'form_go_to_site_color'             => '#50575e',
 
         // ========== REVIEW ========== //
 
